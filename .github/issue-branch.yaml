@@ -1,0 +1,9 @@
+branchName: "full"
+mode: auto
+autoCloseIssue: true
+gitSafeReplacementChar: "_"
+branches:
+  - label: question
+    skip: true
+  - label: docs
+    skip: true
