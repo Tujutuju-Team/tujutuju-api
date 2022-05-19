@@ -1,0 +1,29 @@
+version: "3.8"
+services:
+  api:
+    container_name: "api"
+    env_file: ".env"
+    image: "tujutuju-api:latest"
+    build:
+      context: "."
+      dockerfile: "Dockerfile"
+    ports:
+      - "${PORT}:${PORT}"
+    volumes:
+      - "./volumes/api:/usr/src/app/storage"
+      - "./migrations:/usr/src/app/migrations"
+    depends_on:
+      - db
+    deploy:
+      restart_policy:
+        condition: on-failure
+
+  db:
+    container_name: "db"
+    env_file: ".env"
+    image: "postgres:latest"
+    volumes:
+      - "./volumes/db:/var/lib/postgresql/data"
+    deploy:
+      restart_policy:
+        condition: on-failure
