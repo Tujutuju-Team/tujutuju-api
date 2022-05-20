@@ -1,4 +1,4 @@
 module.exports = {
   validation: require("./validation"),
-  isAuth: require("./auth")
+  auth: require("./auth")
 };

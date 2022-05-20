@@ -27,4 +27,4 @@ async function isAuth(req, res, next) {
   next();
 }
 
-module.exports = asyncWrapper(isAuth);
+module.exports = { isAuth: asyncWrapper(isAuth) };
