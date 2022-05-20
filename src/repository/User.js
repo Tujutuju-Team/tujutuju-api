@@ -13,7 +13,8 @@ class User {
   };
 
   static findByEmail = async (email) => {
-    return query("SELECT * FROM users WHERE email = $1", [email]);
+    const result = await query("SELECT * FROM users WHERE email = $1", [email]);
+    return result.rows[0];
   };
 
   static findAll = async (page = 1, size = 1000) => {
@@ -42,3 +43,5 @@ class User {
     return query("DELETE FROM users WHERE email = $1", [email]);
   };
 }
+
+module.exports = User;
