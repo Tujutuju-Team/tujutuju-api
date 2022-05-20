@@ -3,6 +3,7 @@ function notFound(req, res) {
 }
 
 function internal(err, req, res, next) {
+  console.error(err);
   res.json(500, { message: "Something went wrong" });
 }
 
