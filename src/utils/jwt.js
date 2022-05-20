@@ -1,20 +1,27 @@
 const jwt = require("jsonwebtoken");
 
-function generate(payload) {
+const standardPayload = {
+  iss: "",
+  sub: "",
+  exp: "",
+  iat: "",
+  jti: ""
+};
+
+function generate(payload = standardPayload) {
   return new Promise((res, rej) => {
     const secret = process.env.JWT_SECRET;
-    jwt.sign(payload, secret, (err, token) => {
-      if (err) {
-        return rej(err);
-      }
-      res(token);
-    });
+    jwt.sign(payload, secret, (err, token) => (err ? rej(err) : res(token)));
   });
 }
 
 function verify(token) {
-  const secret = process.env.JWT_SECRET;
-  return jwt.verify(token, secret);
+  return new Promise((res, rej) => {
+    const secret = process.env.JWT_SECRET;
+    jwt.verify(token, secret, (err, decoded) =>
+      err ? rej(err) : res(decoded)
+    );
+  });
 }
 
 module.exports = { generate, verify };
