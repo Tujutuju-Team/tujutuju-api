@@ -1,7 +1,7 @@
 const express = require("express");
 const { body } = require("express-validator");
 const controllers = require("../controllers");
-const { validation } = require("../middlewares");
+const { validation, isAuth } = require("../middlewares");
 
 const Router = express.Router();
 
@@ -25,7 +25,7 @@ Router.post(
   controllers.auth.register
 );
 
-Router.get("/users", controllers.users.index);
+Router.get("/me", isAuth, controllers.users.me);
 
 Router.get("/foods", controllers.foods.index);
 
