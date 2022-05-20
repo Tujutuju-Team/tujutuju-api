@@ -3,15 +3,14 @@ services:
   api:
     container_name: "api"
     env_file: ".env"
-    image: "tujutuju-api:latest"
-    build:
-      context: "."
-      dockerfile: "Dockerfile"
+    image: "node:16"
+    command: "npm start"
+    working_dir: "/app"
+    volumes:
+      - "tujutuju-nodemodules:/app/node_modules"
+      - ".:/app"
     ports:
       - "${PORT}:${PORT}"
-    volumes:
-      - "./volumes/api:/usr/src/app/storage"
-      - "./migrations:/usr/src/app/migrations"
     depends_on:
       - db
     deploy:
@@ -27,3 +26,7 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
+
+volumes:
+  tujutuju-nodemodules:
+    external: true
