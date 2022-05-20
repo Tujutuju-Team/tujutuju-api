@@ -6,7 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon ./src/main.js",
-    "migrate": "node node_modules/db-migrate/bin/db-migrate"
+    "migrate": "node node_modules/db-migrate/bin/db-migrate",
+    "docker:up": "docker volume create tujutuju-nodemodules && docker-compose -f docker-compose.builder.yaml run --rm install && docker-compose up",
+    "docker:down": "docker-compose down",
+    "docker:clear": "npm run docker:stop; docker volume rm tujutuju-nodemodules"
   },
   "repository": {
     "type": "git",
@@ -24,7 +27,9 @@
     "db-migrate": "^0.11.13",
     "db-migrate-pg": "^1.2.2",
     "express": "^4.18.1",
+    "express-validator": "^6.14.0",
     "jsonwebtoken": "^8.5.1",
+    "nanoid": "^3.3.4",
     "pg": "^8.7.3"
   },
   "devDependencies": {
