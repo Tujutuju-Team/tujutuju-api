@@ -1,3 +1,4 @@
 module.exports = {
-  validation: require("./validation")
+  validation: require("./validation"),
+  isAuth: require("./auth")
 };
