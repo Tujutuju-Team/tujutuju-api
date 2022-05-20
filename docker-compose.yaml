@@ -23,6 +23,7 @@ services:
     image: "postgres:latest"
     volumes:
       - "./volumes/db:/var/lib/postgresql/data"
+      - "./scripts/docker/db:/docker-entrypoint-initdb.d"
     deploy:
       restart_policy:
         condition: on-failure
