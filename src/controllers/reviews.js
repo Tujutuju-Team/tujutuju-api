@@ -1,5 +1,11 @@
 const { constants: status } = require("http2");
-const { User, Place, PlaceReview, RestaurantReview } = require("../repository");
+const {
+  User,
+  Place,
+  Restaurant,
+  PlaceReview,
+  RestaurantReview
+} = require("../repository");
 const { asyncWrapper, pagination } = require("../utils");
 
 async function place(req, res) {
@@ -80,7 +86,7 @@ async function publishPlaceReview(req, res) {
   // check if place destination exists
   const destination = await Place.findById(id);
   if (!destination) {
-    return res.json({
+    return res.status(status.HTTP_STATUS_NOT_FOUND).json({
       meta: {
         code: status.HTTP_STATUS_NOT_FOUND,
         message: "Place is not found"
@@ -90,7 +96,7 @@ async function publishPlaceReview(req, res) {
 
   const user = await User.findByEmail(userEmail);
   if (!user) {
-    return res.json({
+    return res.status(status.HTTP_STATUS_NOT_FOUND).json({
       meta: {
         code: status.HTTP_STATUS_NOT_FOUND,
         message: "User is not found"
@@ -115,9 +121,53 @@ async function publishPlaceReview(req, res) {
     }
   });
 }
+async function publishRestaurantReview(req, res) {
+  const id = +req.params.id;
+  const { rating, description } = req.body;
+  const userEmail = req.user.sub;
+
+  // check if restaurant destination exists
+  const resto = await Restaurant.findById(id);
+  if (!resto) {
+    return res.status(status.HTTP_STATUS_NOT_FOUND).json({
+      meta: {
+        code: status.HTTP_STATUS_NOT_FOUND,
+        message: "Restaurant is not found"
+      }
+    });
+  }
+
+  const user = await User.findByEmail(userEmail);
+  if (!user) {
+    return res.status(status.HTTP_STATUS_NOT_FOUND).json({
+      meta: {
+        code: status.HTTP_STATUS_NOT_FOUND,
+        message: "User is not found"
+      }
+    });
+  }
+
+  const review = new RestaurantReview({
+    userId: user.id,
+    restaurantId: resto.id,
+    rating,
+    description
+  });
+
+  await review.create();
+
+  return res.json({
+    meta: {
+      code: status.HTTP_STATUS_OK,
+      message: "Review published"
+    },
+    data: result
+  });
+}
 
 module.exports = {
   place: asyncWrapper(place),
   restaurant: asyncWrapper(restaurant),
-  publishPlaceReview: asyncWrapper(publishPlaceReview)
+  publishPlaceReview: asyncWrapper(publishPlaceReview),
+  publishRestaurantReview: asyncWrapper(publishRestaurantReview)
 };

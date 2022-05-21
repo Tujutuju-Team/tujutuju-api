@@ -1,11 +1,11 @@
 const { query } = require("../utils/db");
 
 class RestaurantReview {
-  constructor({ userId, restaurantId, rating, descrption }) {
+  constructor({ userId, restaurantId, rating, description }) {
     this.userId = userId;
     this.restaurantId = restaurantId;
     this.rating = rating;
-    this.descrption = descrption;
+    this.description = description;
   }
 
   count = async () => {
@@ -31,6 +31,21 @@ class RestaurantReview {
 
     const result = await query(statement, [this.restaurantId, limit, offset]);
     return result.rows;
+  };
+
+  create = async () => {
+    const statement = `
+      INSERT INTO restaurant_reviews (user_id, restaurant_id, rating, description)
+      VALUES ($1, $2, $3, $4)
+      RETURNING id
+    `;
+
+    return query(statement, [
+      this.userId,
+      this.restaurantId,
+      this.rating,
+      this.description
+    ]);
   };
 }
 

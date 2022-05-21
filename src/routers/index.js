@@ -35,6 +35,15 @@ Router.post(
   auth.isAuth,
   controllers.reviews.publishPlaceReview
 );
+Router.post(
+  "/restaurants/:id/reviews",
+  param("id", "Id should be positive integer").isInt({ gt: 0 }),
+  body("rating", "Rating should be integer from 1 - 5").isInt({ gt: 0, lt: 6 }),
+  body("description", "Invalid description").isString().notEmpty(),
+  validation.isValid,
+  auth.isAuth,
+  controllers.reviews.publishRestaurantReview
+);
 
 Router.get(
   "/places",
