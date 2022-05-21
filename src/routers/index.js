@@ -69,7 +69,12 @@ Router.get(
   validation.isValid,
   controllers.reviews.restaurant
 );
-
+Router.get(
+  "/foods/:id",
+  param("id", "id should be positive integer").isInt({ gt: 0 }),
+  validation.isValid,
+  controllers.foods.detailFood
+);
 Router.get(
   "/places",
   query("limit", "limit should be positive integer")
