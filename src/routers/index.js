@@ -71,6 +71,18 @@ Router.get(
   validation.isValid,
   controllers.reviews.place
 );
+Router.get(
+  "/restaurants/:id/reviews",
+  param("id", "id should be positive integer").isInt({ gt: 0 }),
+  query("limit", "limit should be positive integer")
+    .if((value) => value)
+    .isInt({ gt: 0 }),
+  query("page", "page should be positive integer")
+    .if((value) => value)
+    .isInt({ gt: 0 }),
+  validation.isValid,
+  controllers.reviews.restaurant
+);
 
 Router.use(controllers.errors.notFound);
 Router.use(controllers.errors.internal);

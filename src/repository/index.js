@@ -3,5 +3,6 @@ module.exports = {
   Food: require("./food"),
   Place: require("./place"),
   Restaurant: require("./Restaurant"),
-  PlaceReview: require("./PlaceReview")
+  PlaceReview: require("./PlaceReview"),
+  RestaurantReview: require("./RestaurantReview")
 };
