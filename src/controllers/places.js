@@ -9,6 +9,11 @@ async function index(req, res) {
   const { data, totalData, totalPage, nextUrl, prevUrl } =
     await pagination.getData(limit, page, Place);
 
+  const dataFormated = data.map((p) => {
+    const { avg, ...rest } = p;
+    return { ...rest, review: { average_rating: +avg } };
+  });
+
   res.json({
     meta: {
       code: status.HTTP_STATUS_OK,
@@ -20,7 +25,7 @@ async function index(req, res) {
       next_page: nextUrl,
       prev_page: prevUrl
     },
-    data: data
+    data: dataFormated
   });
 }
 
