@@ -46,6 +46,36 @@ Router.post(
 );
 
 Router.get(
+  "/places/:id/reviews",
+  param("id", "id should be positive integer").isInt({ gt: 0 }),
+  query("limit", "limit should be positive integer")
+    .if((value) => value)
+    .isInt({ gt: 0 }),
+  query("page", "page should be positive integer")
+    .if((value) => value)
+    .isInt({ gt: 0 }),
+  validation.isValid,
+  controllers.reviews.place
+);
+Router.get(
+  "/restaurants/:id/reviews",
+  param("id", "id should be positive integer").isInt({ gt: 0 }),
+  query("limit", "limit should be positive integer")
+    .if((value) => value)
+    .isInt({ gt: 0 }),
+  query("page", "page should be positive integer")
+    .if((value) => value)
+    .isInt({ gt: 0 }),
+  validation.isValid,
+  controllers.reviews.restaurant
+);
+Router.get(
+  "/foods/:id",
+  param("id", "id should be positive integer").isInt({ gt: 0 }),
+  validation.isValid,
+  controllers.foods.detailFood
+);
+Router.get(
   "/places",
   query("limit", "limit should be positive integer")
     .if((value) => value)
@@ -76,30 +106,6 @@ Router.get(
     .if((value) => value)
     .isInt({ gt: 0 }),
   controllers.foods.index
-);
-Router.get(
-  "/places/:id/reviews",
-  param("id", "id should be positive integer").isInt({ gt: 0 }),
-  query("limit", "limit should be positive integer")
-    .if((value) => value)
-    .isInt({ gt: 0 }),
-  query("page", "page should be positive integer")
-    .if((value) => value)
-    .isInt({ gt: 0 }),
-  validation.isValid,
-  controllers.reviews.place
-);
-Router.get(
-  "/restaurants/:id/reviews",
-  param("id", "id should be positive integer").isInt({ gt: 0 }),
-  query("limit", "limit should be positive integer")
-    .if((value) => value)
-    .isInt({ gt: 0 }),
-  query("page", "page should be positive integer")
-    .if((value) => value)
-    .isInt({ gt: 0 }),
-  validation.isValid,
-  controllers.reviews.restaurant
 );
 
 Router.use(controllers.errors.notFound);

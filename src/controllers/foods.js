@@ -23,4 +23,29 @@ async function index(req, res) {
   });
 }
 
-module.exports = { index: asyncWrapper(index) };
+async function detailFood(req, res) {
+  const id = +req.params.id;
+
+  const result = await Food.findById(id);
+  if (!result) {
+    return res.status(status.HTTP_STATUS_NOT_FOUND).json({
+      error: {
+        code: status.HTTP_STATUS_NOT_FOUND,
+        message: "Food not found"
+      }
+    });
+  }
+
+  res.json({
+    meta: {
+      code: status.HTTP_STATUS_OK,
+      message: "Success"
+    },
+    data: result
+  });
+}
+
+module.exports = {
+  index: asyncWrapper(index),
+  detailFood: asyncWrapper(detailFood)
+};

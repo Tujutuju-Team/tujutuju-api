@@ -15,7 +15,8 @@ class Food {
   };
 
   static findById = async (id) => {
-    return query("SELECT * FROM foods WHERE id = $1", [id]);
+    const result = await query("SELECT * FROM foods WHERE id = $1", [id]);
+    return result.rows[0];
   };
 
   static find = async ({ limit = 0, offset = 0 }) => {

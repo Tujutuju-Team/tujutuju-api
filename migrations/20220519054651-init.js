@@ -121,6 +121,7 @@ exports.up = function (db) {
     return db.createTable("menus", {
       id: { type: "int", primaryKey: true, autoIncrement: true },
       description: { type: "string" },
+      price: { type: "decimal", notNull: true },
       food_id: {
         type: "int",
         notNull: true,
