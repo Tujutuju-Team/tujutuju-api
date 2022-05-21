@@ -9,7 +9,7 @@
     "migrate": "node node_modules/db-migrate/bin/db-migrate",
     "docker:up": "docker volume create tujutuju-nodemodules && docker-compose -f docker-compose.builder.yaml run --rm install && docker-compose up",
     "docker:down": "docker-compose down",
-    "docker:clear": "npm run docker:stop; docker volume rm tujutuju-nodemodules"
+    "docker:clear": "npm run docker:down; docker volume rm tujutuju-nodemodules"
   },
   "repository": {
     "type": "git",
