@@ -1,7 +1,7 @@
 const express = require("express");
-const { body } = require("express-validator");
+const { body, query } = require("express-validator");
 const controllers = require("../controllers");
-const { validation, isAuth } = require("../middlewares");
+const { validation, auth } = require("../middlewares");
 
 const Router = express.Router();
 
@@ -25,8 +25,19 @@ Router.post(
   controllers.auth.register
 );
 
-Router.get("/me", isAuth, controllers.users.me);
+Router.get("/me", auth.isAuth, controllers.users.me);
 
+Router.get(
+  "/places",
+  query("limit", "limit should be positive integer")
+    .if((value) => value)
+    .isInt({ gt: 0 }),
+  query("page", "page should be positive integer")
+    .if((value) => value)
+    .isInt({ gt: 0 }),
+  validation.isValid,
+  controllers.places.index
+);
 Router.get("/foods", controllers.foods.index);
 
 Router.use(controllers.errors.notFound);
