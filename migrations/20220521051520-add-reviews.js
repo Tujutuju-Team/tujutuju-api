@@ -46,7 +46,9 @@ exports.up = function (db) {
   return seedDB();
 };
 
-exports.down = function (db) {};
+exports.down = function (db) {
+  return new Promise((res) => res());
+};
 
 exports._meta = {
   version: 1

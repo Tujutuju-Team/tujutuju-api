@@ -1,5 +1,5 @@
 const express = require("express");
-const { body, query } = require("express-validator");
+const { body, query, param } = require("express-validator");
 const controllers = require("../controllers");
 const { validation, auth } = require("../middlewares");
 
@@ -25,6 +25,24 @@ Router.post(
     .withMessage("Password should be minimum 6 characters"),
   validation.isValid,
   controllers.auth.register
+);
+Router.post(
+  "/places/:id/reviews",
+  param("id", "Id should be positive integer").isInt({ gt: 0 }),
+  body("rating", "Rating should be integer from 1 - 5").isInt({ gt: 0, lt: 6 }),
+  body("description", "Invalid description").isString().notEmpty(),
+  validation.isValid,
+  auth.isAuth,
+  controllers.reviews.publishPlaceReview
+);
+Router.post(
+  "/restaurants/:id/reviews",
+  param("id", "Id should be positive integer").isInt({ gt: 0 }),
+  body("rating", "Rating should be integer from 1 - 5").isInt({ gt: 0, lt: 6 }),
+  body("description", "Invalid description").isString().notEmpty(),
+  validation.isValid,
+  auth.isAuth,
+  controllers.reviews.publishRestaurantReview
 );
 
 Router.get(
@@ -58,6 +76,30 @@ Router.get(
     .if((value) => value)
     .isInt({ gt: 0 }),
   controllers.foods.index
+);
+Router.get(
+  "/places/:id/reviews",
+  param("id", "id should be positive integer").isInt({ gt: 0 }),
+  query("limit", "limit should be positive integer")
+    .if((value) => value)
+    .isInt({ gt: 0 }),
+  query("page", "page should be positive integer")
+    .if((value) => value)
+    .isInt({ gt: 0 }),
+  validation.isValid,
+  controllers.reviews.place
+);
+Router.get(
+  "/restaurants/:id/reviews",
+  param("id", "id should be positive integer").isInt({ gt: 0 }),
+  query("limit", "limit should be positive integer")
+    .if((value) => value)
+    .isInt({ gt: 0 }),
+  query("page", "page should be positive integer")
+    .if((value) => value)
+    .isInt({ gt: 0 }),
+  validation.isValid,
+  controllers.reviews.restaurant
 );
 
 Router.use(controllers.errors.notFound);

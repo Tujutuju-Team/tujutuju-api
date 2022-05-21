@@ -4,5 +4,6 @@ module.exports = {
   users: require("./users"),
   places: require("./places"),
   errors: require("./errors"),
-  restaurants: require("./restaurants")
+  restaurants: require("./restaurants"),
+  reviews: require("./reviews")
 };

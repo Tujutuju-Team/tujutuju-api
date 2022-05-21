@@ -1,5 +1,7 @@
 "use strict";
 
+const bcrypt = require("bcrypt");
+
 var dbm;
 var type;
 var seed;
@@ -154,11 +156,12 @@ exports.up = function (db) {
     const foods = [];
 
     for (let i = 1; i <= 20; i++) {
+      const password = await bcrypt.hash("12345678", 12);
       users.push(
         db.insert(
           "users",
           ["email", "password", "name"],
-          [`superman_${i}@mail.com`, "12345678", `Richard Marcolo-${i}`]
+          [`superman_${i}@mail.com`, password, `Richard Marcolo-${i}`]
         )
       );
       foods.push(
