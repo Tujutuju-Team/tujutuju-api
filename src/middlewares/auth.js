@@ -2,7 +2,7 @@ const { constants: status } = require("http2");
 const { jwt, asyncWrapper } = require("../utils");
 
 async function isAuth(req, res, next) {
-  const token = req.headers.authorization.split(" ")[1];
+  const token = req.headers.authorization?.split(" ")[1];
   if (!token) {
     return res.status(status.HTTP_STATUS_UNAUTHORIZED).json({
       error: {
