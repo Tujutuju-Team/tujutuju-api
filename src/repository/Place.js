@@ -22,12 +22,16 @@ class Place {
       throw new Error("Invalid limit or offset");
     }
 
-    const promise =
-      limit || offset
-        ? query(`SELECT * FROM places LIMIT $1 OFFSET $2`, [limit, offset])
-        : query(`SELECT * FROM places`);
+    const statement = `
+      SELECT * FROM places
+      LEFT JOIN (
+        SELECT place_id, AVG(rating) FROM place_reviews GROUP BY place_id
+      ) AS temp ON (places.id = temp.place_id)
+      LIMIT $1 
+      OFFSET $2
+    `;
 
-    const result = await promise;
+    const result = await query(statement, [limit, offset]);
     return result.rows;
   };
 }
