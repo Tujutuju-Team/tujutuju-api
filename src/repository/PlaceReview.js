@@ -1,11 +1,11 @@
 const { query } = require("../utils/db");
 
 class PlaceReview {
-  constructor({ userId, placeId, rating, descrption }) {
+  constructor({ userId, placeId, rating, description }) {
     this.userId = userId;
     this.placeId = placeId;
     this.rating = rating;
-    this.descrption = descrption;
+    this.description = description;
   }
 
   count = async () => {
@@ -31,6 +31,20 @@ class PlaceReview {
 
     const result = await query(statement, [this.placeId, limit, offset]);
     return result.rows;
+  };
+
+  create = async () => {
+    const statement = `
+      INSERT INTO place_reviews (user_id, place_id, rating, description)
+      VALUES ($1, $2, $3, $4)
+    `;
+
+    return query(statement, [
+      this.userId,
+      this.placeId,
+      this.rating,
+      this.description
+    ]);
   };
 }
 

@@ -1,5 +1,5 @@
 const { constants: status } = require("http2");
-const { PlaceReview, RestaurantReview } = require("../repository");
+const { User, Place, PlaceReview, RestaurantReview } = require("../repository");
 const { asyncWrapper, pagination } = require("../utils");
 
 async function place(req, res) {
@@ -72,7 +72,52 @@ async function restaurant(req, res) {
   });
 }
 
+async function publishPlaceReview(req, res) {
+  const id = +req.params.id;
+  const { rating, description } = req.body;
+  const userEmail = req.user.sub;
+
+  // check if place destination exists
+  const destination = await Place.findById(id);
+  if (!destination) {
+    return res.json({
+      meta: {
+        code: status.HTTP_STATUS_NOT_FOUND,
+        message: "Place is not found"
+      }
+    });
+  }
+
+  const user = await User.findByEmail(userEmail);
+  if (!user) {
+    return res.json({
+      meta: {
+        code: status.HTTP_STATUS_NOT_FOUND,
+        message: "User is not found"
+      }
+    });
+  }
+
+  const review = new PlaceReview({
+    placeId: destination.id,
+    userId: user.id,
+    rating,
+    description
+  });
+
+  console.log("REVIEW", review);
+  await review.create();
+
+  return res.json({
+    meta: {
+      code: status.HTTP_STATUS_OK,
+      message: "Review published"
+    }
+  });
+}
+
 module.exports = {
   place: asyncWrapper(place),
-  restaurant: asyncWrapper(restaurant)
+  restaurant: asyncWrapper(restaurant),
+  publishPlaceReview: asyncWrapper(publishPlaceReview)
 };

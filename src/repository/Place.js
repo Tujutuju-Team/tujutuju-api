@@ -9,7 +9,8 @@ class Place {
   }
 
   static findById = async (id) => {
-    query("SELECT * FROM places WHERE id = $1", [id]);
+    const result = await query("SELECT * FROM places WHERE id = $1", [id]);
+    return result.rows[0];
   };
 
   static count = async () => {
