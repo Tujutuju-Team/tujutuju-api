@@ -38,6 +38,17 @@ Router.get(
   validation.isValid,
   controllers.places.index
 );
+Router.get(
+  "/restaurants",
+  query("limit", "limit should be positive integer")
+    .if((value) => value)
+    .isInt({ gt: 0 }),
+  query("page", "page should be positive integer")
+    .if((value) => value)
+    .isInt({ gt: 0 }),
+  validation.isValid,
+  controllers.restaurants.index
+);
 Router.get("/foods", controllers.foods.index);
 
 Router.use(controllers.errors.notFound);

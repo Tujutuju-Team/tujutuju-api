@@ -3,5 +3,6 @@ module.exports = {
   foods: require("./foods"),
   users: require("./users"),
   places: require("./places"),
-  errors: require("./errors")
+  errors: require("./errors"),
+  restaurants: require("./restaurants")
 };
