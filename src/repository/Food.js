@@ -8,18 +8,26 @@ class Food {
     this.image = image;
   }
 
+  static count = async () => {
+    const result = await query("SELECT COUNT(*) FROM foods");
+    console.log(result);
+    return +result.rows[0].count;
+  };
+
   static findById = async (id) => {
-    query("SELECT * FROM foods WHERE id = $1", [id]);
+    return query("SELECT * FROM foods WHERE id = $1", [id]);
   };
 
-  static findAll = async (page, offset) => {
-    query(`SELECT * FROM foods LIMIT ${offset} OFFSET ${page * offset}`);
-  };
+  static find = async ({ limit = 0, offset = 0 }) => {
+    if (limit < 0 || offset < 0) {
+      throw new Error("Invalid limit or offset");
+    }
 
-  save = async () => {
-    query(
-      "INSERT INTO foods (name, price, description, image) VALUES ($1, $2, $3, $4)",
-      [this.name, this.price, this.description, this.image]
-    );
+    const statement = `SELECT * FROM foods LIMIT $1 OFFSET $2`;
+
+    const result = await query(statement, [limit, offset]);
+    return result.rows;
   };
 }
+
+module.exports = Food;

@@ -7,6 +7,8 @@ const Router = express.Router();
 
 Router.use(express.json());
 
+Router.get("/me", auth.isAuth, controllers.users.me);
+
 Router.post(
   "/auth/login",
   body("email", "Invalid email").isEmail(),
@@ -24,8 +26,6 @@ Router.post(
   validation.isValid,
   controllers.auth.register
 );
-
-Router.get("/me", auth.isAuth, controllers.users.me);
 
 Router.get(
   "/places",
@@ -49,7 +49,16 @@ Router.get(
   validation.isValid,
   controllers.restaurants.index
 );
-Router.get("/foods", controllers.foods.index);
+Router.get(
+  "/foods",
+  query("limit", "limit should be positive integer")
+    .if((value) => value)
+    .isInt({ gt: 0 }),
+  query("page", "page should be positive integer")
+    .if((value) => value)
+    .isInt({ gt: 0 }),
+  controllers.foods.index
+);
 
 Router.use(controllers.errors.notFound);
 Router.use(controllers.errors.internal);
