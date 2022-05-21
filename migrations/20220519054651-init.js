@@ -148,30 +148,52 @@ exports.up = function (db) {
     });
   }
   async function seedDB() {
-    let user = db.insert(
-      "users",
-      ["email", "password", "name"],
-      ["superman@mail.com", "12345678", "Richard Marcolo"]
-    );
-    let food = db.insert(
-      "foods",
-      ["name", "description"],
-      ["Rawon", "Rawon adalah masakan khas Surabaya."]
-    );
-    let restaurant = db.insert(
-      "restaurants",
-      ["name", "address", "email", "phone"],
-      ["Kedai Super Enak", "123 Main St", "superenak@mail.com", "1234567890"]
-    );
-    let place = db.insert(
-      "places",
-      ["name", "address", "description"],
-      ["Pantai Kuta", "123 Main St", "Pantai pasir yang keren di Bali"]
-    );
+    const users = [];
+    const places = [];
+    const restaurants = [];
+    const foods = [];
 
-    const promises = [];
-    promises.push(user, food, place, restaurant);
-    return Promise.all(promises);
+    for (let i = 1; i <= 20; i++) {
+      users.push(
+        db.insert(
+          "users",
+          ["email", "password", "name"],
+          [`superman_${i}@mail.com`, "12345678", `Richard Marcolo-${i}`]
+        )
+      );
+      foods.push(
+        db.insert(
+          "foods",
+          ["name", "description"],
+          [`Rawon-${i}`, "Rawon adalah masakan khas Surabaya."]
+        )
+      );
+      restaurants.push(
+        db.insert(
+          "restaurants",
+          ["name", "address", "email", "phone"],
+          [
+            `Kedai Super Enak - ${i}`,
+            "123 Main St",
+            `superenak_${i}@mail.com`,
+            "1234567890"
+          ]
+        )
+      );
+      places.push(
+        db.insert(
+          "places",
+          ["name", "address", "description"],
+          [
+            `Pantai Kuta - ${i}`,
+            `123_${i} Main St`,
+            "Pantai pasir yang keren di Bali"
+          ]
+        )
+      );
+    }
+
+    return Promise.all([...users, ...foods, ...places, ...restaurants]);
   }
 
   return createUserTable()
