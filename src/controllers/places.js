@@ -5,11 +5,11 @@ const { Place } = require("../repository");
 async function index(req, res) {
   const limit = +req.query.limit || 10;
   const page = +req.query.page || 1;
+  const url = process.env.DOMAIN + req.path;
 
-  const { data, totalData, totalPage, nextUrl, prevUrl } =
-    await pagination.getData(limit, page, Place);
+  const result = await pagination.getData(url, limit, page, Place);
 
-  const dataFormated = data.map((p) => {
+  const dataFormated = result.data.map((p) => {
     const { avg, ...rest } = p;
     return { ...rest, review: { average_rating: +avg } };
   });
@@ -20,10 +20,10 @@ async function index(req, res) {
       message: "Mantapp"
     },
     pagination: {
-      total_data: totalData,
-      total_page: totalPage,
-      next_page: nextUrl,
-      prev_page: prevUrl
+      total_data: result.totalData,
+      total_page: result.totalPage,
+      next_page: result.nextUrl,
+      prev_page: result.prevUrl
     },
     data: dataFormated
   });
