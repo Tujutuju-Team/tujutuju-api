@@ -5,8 +5,9 @@ const { asyncWrapper, pagination } = require("../utils");
 async function index(req, res) {
   const limit = +req.query.limit || 10;
   const page = +req.query.page || 1;
+  const url = process.env.DOMAIN + req.path;
 
-  const result = await pagination.getData(limit, page, Food);
+  const result = await pagination.getData(url, limit, page, Food);
 
   res.json({
     meta: {

@@ -12,9 +12,10 @@ async function place(req, res) {
   const id = +req.params.id;
   const limit = +req.query.limit || 10;
   const page = +req.query.page || 1;
+  const url = process.env.DOMAIN + req.path;
 
   const pr = new PlaceReview({ placeId: id });
-  const result = await pagination.getData(limit, page, pr);
+  const result = await pagination.getData(url, limit, page, pr);
   const data = result.data.map((item) => {
     return {
       id: item.review_id,
@@ -47,9 +48,10 @@ async function restaurant(req, res) {
   const id = +req.params.id;
   const limit = +req.query.limit || 10;
   const page = +req.query.page || 1;
+  const url = process.env.DOMAIN + req.path;
 
   const rr = new RestaurantReview({ restaurantId: id });
-  const result = await pagination.getData(limit, page, rr);
+  const result = await pagination.getData(url, limit, page, rr);
   const data = result.data.map((item) => {
     return {
       id: item.review_id,
