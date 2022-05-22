@@ -70,10 +70,22 @@ Router.get(
   controllers.reviews.restaurant
 );
 Router.get(
+  "/places/:id",
+  param("id", "id should be positive integer").isInt({ gt: 0 }),
+  validation.isValid,
+  controllers.places.detailPlace
+);
+Router.get(
   "/foods/:id",
   param("id", "id should be positive integer").isInt({ gt: 0 }),
   validation.isValid,
   controllers.foods.detailFood
+);
+Router.get(
+  "/restaurants/:id",
+  param("id", "id should be positive integer").isInt({ gt: 0 }),
+  validation.isValid,
+  controllers.restaurants.detailRestaurant
 );
 Router.get(
   "/places",

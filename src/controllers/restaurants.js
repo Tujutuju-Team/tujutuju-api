@@ -29,6 +29,29 @@ async function index(req, res) {
   });
 }
 
+async function detailRestaurant(req, res) {
+  const id = +req.params.id;
+
+  const result = await Restaurant.findById(id);
+  if (!result) {
+    return res.status(status.HTTP_STATUS_NOT_FOUND).json({
+      error: {
+        code: status.HTTP_STATUS_NOT_FOUND,
+        message: "Restaurant not found"
+      }
+    });
+  }
+
+  res.json({
+    meta: {
+      code: status.HTTP_STATUS_OK,
+      message: "Success"
+    },
+    data: result
+  });
+}
+
 module.exports = {
-  index: asyncWrapper(index)
+  index: asyncWrapper(index),
+  detailRestaurant: asyncWrapper(detailRestaurant)
 };
