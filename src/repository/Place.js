@@ -9,7 +9,16 @@ class Place {
   }
 
   static findById = async (id) => {
-    const result = await query("SELECT * FROM places WHERE id = $1", [id]);
+    const statement = `
+      SELECT places.*, t.avg FROM places
+      JOIN (
+        SELECT place_id, AVG(rating) AS avg FROM place_reviews 
+        WHERE place_id = $1
+        GROUP BY place_id
+      ) AS t
+      ON (places.id = t.place_id);
+    `;
+    const result = await query(statement, [id]);
     return result.rows[0];
   };
 

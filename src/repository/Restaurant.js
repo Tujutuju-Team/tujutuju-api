@@ -10,7 +10,16 @@ class Restaurant {
   }
 
   static findById = async (id) => {
-    const result = await query("SELECT * FROM restaurants WHERE id = $1", [id]);
+    const statement = `
+      SELECT restaurants.*, t.avg FROM restaurants
+      JOIN (
+        SELECT restaurant_id, AVG(rating) AS avg FROM restaurant_reviews 
+        WHERE restaurant_id = $1
+        GROUP BY restaurant_id
+      ) AS t
+      ON (restaurants.id = t.restaurant_id);
+    `;
+    const result = await query(statement, [id]);
     return result.rows[0];
   };
 
