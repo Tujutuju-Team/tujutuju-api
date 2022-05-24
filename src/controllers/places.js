@@ -42,12 +42,15 @@ async function detailPlace(req, res) {
     });
   }
 
+  const { avg, ...rest } = result;
+  const data = { ...rest, review: { average_rating: +avg } };
+
   res.json({
     meta: {
       code: status.HTTP_STATUS_OK,
       message: "Success"
     },
-    data: result
+    data: data
   });
 }
 
