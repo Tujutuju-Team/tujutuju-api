@@ -9,6 +9,18 @@ Router.use(express.json());
 
 Router.get("/me", auth.isAuth, controllers.users.me);
 
+Router.put(
+  "/me/password",
+  auth.isAuth,
+  body("old_password", "Invalid old_password").isString().notEmpty(),
+  body("new_password", "Invalid new_password")
+    .isString()
+    .isLength({ min: 6 })
+    .withMessage("New password should be minimum 6 characters"),
+  validation.isValid,
+  controllers.users.changePassword
+);
+
 Router.post(
   "/auth/login",
   body("email", "Invalid email").isEmail(),
@@ -28,20 +40,20 @@ Router.post(
 );
 Router.post(
   "/places/:id/reviews",
+  auth.isAuth,
   param("id", "Id should be positive integer").isInt({ gt: 0 }),
   body("rating", "Rating should be integer from 1 - 5").isInt({ gt: 0, lt: 6 }),
   body("description", "Invalid description").isString().notEmpty(),
   validation.isValid,
-  auth.isAuth,
   controllers.reviews.publishPlaceReview
 );
 Router.post(
   "/restaurants/:id/reviews",
+  auth.isAuth,
   param("id", "Id should be positive integer").isInt({ gt: 0 }),
   body("rating", "Rating should be integer from 1 - 5").isInt({ gt: 0, lt: 6 }),
   body("description", "Invalid description").isString().notEmpty(),
   validation.isValid,
-  auth.isAuth,
   controllers.reviews.publishRestaurantReview
 );
 
