@@ -9,6 +9,18 @@ Router.use(express.json());
 
 Router.get("/me", auth.isAuth, controllers.users.me);
 
+Router.put(
+  "/me/password",
+  auth.isAuth,
+  body("old_password", "Invalid old_password").isString().notEmpty(),
+  body("new_password", "Invalid new_password")
+    .isString()
+    .isLength({ min: 6 })
+    .withMessage("New password should be minimum 6 characters"),
+  validation.isValid,
+  controllers.users.changePassword
+);
+
 Router.post(
   "/auth/login",
   body("email", "Invalid email").isEmail(),
