@@ -1,7 +1,14 @@
 const { query } = require("../utils/db");
 
 class User {
-  constructor({ name = "", email = "", password = "", profilePicture = "" }) {
+  constructor({
+    id,
+    name = "",
+    email = "",
+    password = "",
+    profilePicture = ""
+  }) {
+    this.id = id;
     this.name = name;
     this.email = email;
     this.password = password;
@@ -28,10 +35,10 @@ class User {
     );
   };
 
-  updateById = async () => {
+  update = async () => {
     return query(
-      "UPDATE users SET name = $1, email = $2, password = $3 WHERE id = $4",
-      [this.name, this.email, this.password, this.id]
+      "UPDATE users SET name = $1, email = $2, password = $3, profile_picture = $4 WHERE id = $5",
+      [this.name, this.email, this.password, this.profilePicture, this.id]
     );
   };
 
