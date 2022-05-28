@@ -1,0 +1,16 @@
+{
+  "description": "Destination places in Bali",
+  "data": [
+    {
+      "name": "Pantai Kuta",
+      "address": "Jl. Kuta, Kuta, Bali",
+      "description": "Pantai keren di Bali",
+      "longitude": 115.2429,
+      "latitude": -8.7881,
+      "images": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/The_View_of_Kuta_Beach%2C_Bali.jpg/250px-The_View_of_Kuta_Beach%2C_Bali.jpg",
+        "https://i2.wp.com/blog.tripcetera.com/id/wp-content/uploads/2020/03/leebudihart_76864081_2484833498431751_3194446755026370817_n-1024x768.jpg"
+      ]
+    }
+  ]
+}
