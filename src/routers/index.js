@@ -1,7 +1,7 @@
 const express = require("express");
 const { body, query, param } = require("express-validator");
 const controllers = require("../controllers");
-const { validation, auth } = require("../middlewares");
+const { validation, auth, multer } = require("../middlewares");
 
 const Router = express.Router();
 
@@ -21,6 +21,11 @@ Router.put(
   controllers.users.changePassword
 );
 
+Router.post(
+  "/me/avatar",
+  multer.multer.single("avatar"),
+  controllers.users.uploadAvatar
+);
 Router.post(
   "/auth/login",
   body("email", "Invalid email").isEmail(),

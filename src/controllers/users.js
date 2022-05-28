@@ -1,6 +1,8 @@
+const fs = require("fs");
+const path = require("path");
 const { constants: status } = require("http2");
 const { User } = require("../repository");
-const { asyncWrapper, hash } = require("../utils");
+const { asyncWrapper, hash, bucket } = require("../utils");
 
 async function me(req, res) {
   const { sub: userEmail } = req.user;
@@ -52,7 +54,58 @@ async function changePassword(req, res) {
   });
 }
 
+async function uploadAvatar(req, res) {
+  const file = fs.createReadStream(req.file.path);
+  const filename = path.basename(req.file.path);
+  const uploadFile =
+    process.env.NODE_ENV === "production"
+      ? bucket.uploadFile
+      : bucket.uploadFileLocal;
+  const deleteFile =
+    process.env.NODE_ENV === "production"
+      ? bucket.deleteFile
+      : bucket.deleteFileLocal;
+  let uploadedLink = "";
+
+  const userEmail = req.user.sub;
+  const user = await User.findById(userEmail);
+  if (!user) {
+    return res.status(status.HTTP_STATUS_NOT_FOUND).json({
+      error: {
+        code: status.HTTP_STATUS_NOT_FOUND,
+        message: "User not found"
+      }
+    });
+  }
+
+  try {
+    uploadedLink = uploadFile(file, filename);
+  } catch (error) {
+    return res.status(status.HTTP_STATUS_INTERNAL_SERVER_ERROR).json({
+      error: {
+        code: status.HTTP_STATUS_INTERNAL_SERVER_ERROR,
+        message: "Failed uploading avatar"
+      }
+    });
+  }
+
+  // update avatar to refer cloud storage bucket file
+  const updatedUser = new User({ ...user, avatar: uploadedLink });
+  await updatedUser.update();
+
+  // delete existing avatar if exists (async)
+  user.avatar && deleteFile(user.avatar);
+
+  res.json({
+    meta: {
+      code: status.HTTP_STATUS_OK,
+      message: "Successfully uploaded avatar"
+    }
+  });
+}
+
 module.exports = {
   me: asyncWrapper(me),
-  changePassword: asyncWrapper(changePassword)
+  changePassword: asyncWrapper(changePassword),
+  uploadAvatar: asyncWrapper(uploadAvatar)
 };

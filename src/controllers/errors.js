@@ -1,10 +1,18 @@
 function notFound(req, res) {
-  res.json(404, { message: "Not found routes" });
+  res.status(404).json({ message: "Not found routes" });
 }
 
 function internal(err, req, res, next) {
   console.error(err);
-  res.json(500, { message: "Something went wrong" });
+  const message = err.clientMessage || "";
+  const code = err.code || 500;
+  res.status(code).json({
+    error: {
+      code: code,
+      message: "Internal server error",
+      client_message: message
+    }
+  });
 }
 
 module.exports = { internal, notFound };
