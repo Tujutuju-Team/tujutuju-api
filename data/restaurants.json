@@ -4,10 +4,11 @@
     {
       "id": 1,
       "name": "Restoran Kedaton",
-      "address": "Jl. Raya Kuta No.62/3, Kuta, Kec. Kuta, Kabupaten Badung, Bali 80361",
-      "email": "kedaton@gmail.com",
       "longitude": 115.2429,
       "latitude": -8.7881,
+      "address": "Jl. Raya Kuta No.62/3, Kuta, Kec. Kuta, Kabupaten Badung, Bali 80361",
+      "email": "kedaton@gmail.com",
+      "phone": "081282828282",
       "images": [
         "https://b.zmtcdn.com/data/reviews_photos/465/debf3229fd21a521dbbf0ce6643db465_1576051191.jpg",
         "https://media-cdn.tripadvisor.com/media/photo-s/10/5d/72/1a/caption.jpg"
