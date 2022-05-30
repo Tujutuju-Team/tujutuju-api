@@ -5,10 +5,91 @@
       "name": "Babi Guling",
       "description": "Babi panggang guling dengan bumbu rempah-rempah",
       "images": [
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/The_View_of_Kuta_Beach%2C_Bali.jpg/250px-The_View_of_Kuta_Beach%2C_Bali.jpg",
-        "https://i2.wp.com/blog.tripcetera.com/id/wp-content/uploads/2020/03/leebudihart_76864081_2484833498431751_3194446755026370817_n-1024x768.jpg"
+        "https://storage.karmagroup.com/assets/karmagroup.com/blog/2017/07/babi-guling-bali-karma-blog.jpg",
+        "https://www.denpasarkota.go.id/uploads/berita/berita_202411041130_OmzetBabiGulingPanAnaCapaiRp20JutaperHari.jpeg"
       ],
       "restaurants": [{ "id": 1 }]
+    },
+    {
+      "name": "Lawar Bali",
+      "description": "Lawar adalah masakan berupa campuran sayur-sayuran dan daging cincang yang dibumbui secara merata yang berasal dari Bali.",
+      "images": [
+        "https://img.kurio.network/-E8N-Z_JSD-ZRswMI_FZ3bokt-g=/1200x1200/filters:quality(80)/https://kurio-img.kurioapps.com/20/06/03/e1b8a3b5-76af-451f-b5bd-f94b054cf687.jpg",
+        "https://kooliner.com/blog/wp-content/uploads/2016/01/Lawar-2.jpg"
+      ],
+      "restaurants": [{ "id": 2 }]
+    },
+    {
+      "name": "Betutu",
+      "description": "Betutu adalah lauk yang terbuat dari ayam atau bebek yang utuh yang berisi bumbu, kemudian dipanggang dalam api sekam.",
+      "images": [
+        "https://asset.kompas.com/crops/czscp0bAyvfpuoYNGG2H2ivl9tU=/32x22:1000x667/750x500/data/photo/2022/02/28/621c6dd3e732b.jpg",
+        "https://asset.kompas.com/crops/eHb-l4eYcCmpgwXdboML2cbmRwE=/0x0:1000x667/375x240/data/photo/2020/04/20/5e9dab29d6d69.jpg"
+      ],
+      "restaurants": [{ "id": 3 }]
+    },
+    {
+      "name": "Sate Lilit",
+      "description": "Sate Lilit adalah sebuah varian sate asal Bali. Sate ini terbuat dari daging babi, ikan, ayam, daging sapi, atau bahkan kura-kura yang dicincang, kemudian dicampur dengan parutan kelapa, santan, jeruk nipis, bawang merah, dan merica.",
+      "images": [
+        "https://www.nibble.id/uploads/sate_lilit_enak_di_bali_01_18522d1128.jpg",
+        "https://img.celebrities.id/okz/900/kfB804/master_4R8U1Cf7e8_2038.jpg"
+      ],
+      "restaurants": [{ "id": 4 }]
+    },
+    {
+      "name": "Nasi Jinggo",
+      "description": "Nasi jinggo adalah makanan siap saji khas Bali yang dikemasan daun pisang dengan porsi kecil.",
+      "images": [
+        "https://assets.promediateknologi.com/crop/0x0:0x0/x/photo/2021/09/21/3499667277.jpeg",
+        "https://kulineria.id/wp-content/uploads/2019/08/isian-nasi-jinggo-bali.jpg"
+      ],
+      "restaurants": [{ "id": 5 }]
+    },
+    {
+      "name": "Nasi Campur Bali",
+      "description": "Nasi Campur Bali merupakan campuran nasi dengan berbagai macam lauk pauk seperti ayam, telur sayuran dan juga sate lilit yang biasanya terbuat dari ikan atau ayam.",
+      "images": [
+        "https://www.pegipegi.com/travel/wp-content/uploads/2019/03/Nasi-Bali.jpg",
+        "http://danielfooddiary.com/wp-content/uploads/2018/07/putumade11-1.jpg"
+      ],
+      "restaurants": [{ "id": 6 }]
+    },
+    {
+      "name": "Serombotan",
+      "description": "Srombotan adalah sayuran khas Kabupaten Klungkung, Bali, terbuat dari sayur buah botor muda atau kecipir, terong bulat, pare, tauge, kubis yang dimasak setengah matang.",
+      "images": [
+        "https://depostbali.com/photo/plugin/article/2021/1623037942_1.jpg",
+        "https://asset.kompas.com/crops/v6-e-LpSZ5zcIdKHom4KAtzOStU=/0x0:780x390/780x390/data/photo/2015/09/28/1508352tipat-bali780x390.jpg"
+      ],
+      "restaurants": [{ "id": 7 }]
+    },
+    {
+      "name": "Bubur Mengguh",
+      "description": "Bubur Mengguh terbuat dari beras dan santan yang disajikan dengan ayam suwir yang dibumbui lalu disiram kuah ayam kental dan urap sayur yang disajikan terpisah.",
+      "images": [
+        "https://awsimages.detik.net.id/community/media/visual/2021/01/14/bubur-mengguh-bali-2.jpeg?w=700&q=90",
+        "https://assets.promediateknologi.com/crop/0x0:0x0/750x500/photo/kulinear/2021/08/52899601_104324904007606_6883147112557122239_n.jpg"
+      ],
+      "restaurants": [{ "id": 8 }]
+    },
+    {
+      "name": "Sate Plecing",
+      "description": "Sate plecing merupakan makanan khas Bali tepatnya daerah Singaraja. Rasanya terkenal pedas, gurih, dan asam segar.",
+      "images": [
+        "https://kbu-cdn.com/dk/wp-content/uploads/sate-plecing.jpg",
+        "https://asset.kompas.com/crops/Xq_d6lFUS16rLQt4hl17Cqk2UEE=/0x0:739x493/780x390/data/photo/2020/07/28/5f1fdcdacafc4.jpg"
+      ],
+      "restaurants": [{ "id": 9 }]
+    },
+    {
+      "name": "Bebek Timbungan",
+      "description": " Bebek timbungan merupakan hidangan dari bebek yang diolah secara tradisional dan memakan waktu lebih dari 12 jam.",
+      "images": [
+        "https://asset.kompas.com/crops/s6TsZAUfuDCpE42PJqrBfDqS58U=/0x0:780x520/750x500/data/photo/2019/11/08/5dc4712786356.jpg",
+        "https://assets.promediateknologi.com/crop/0x0:0x0/750x500/photo/kulinear/2021/09/61664380_2184677704964778_6262634625662253327_n.jpg"
+      ],
+      "restaurants": [{ "id": 10 }]
     }
   ]
 }

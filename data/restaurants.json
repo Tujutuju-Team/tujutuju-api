@@ -13,6 +13,123 @@
         "https://b.zmtcdn.com/data/reviews_photos/465/debf3229fd21a521dbbf0ce6643db465_1576051191.jpg",
         "https://media-cdn.tripadvisor.com/media/photo-s/10/5d/72/1a/caption.jpg"
       ]
+    },
+    {
+      "id": 2,
+      "name": "Warung Lawar Penatih",
+      "longitude": 115.23355262724532,
+      "latitude": -8.62292589728876,
+      "address": "Jl. Padma No.81, Penatih, Kec. Denpasar Utara, Kota Denpasar, Bali 80237",
+      "email": "penatih@gmail.com",
+      "phone": "085100432382",
+      "images": [
+        "http://4.bp.blogspot.com/_F_EwfX9Y2EU/S2y5ZxmOW6I/AAAAAAAACQw/V9qBXCfEaho/w1200-h630-p-k-no-nu/02_lawar_penatih_02.jpg",
+        "https://media-cdn.tripadvisor.com/media/photo-s/10/5d/72/1a/caption.jpg"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Ayam Betutu Ibu Nia",
+      "longitude": 115.23876388191934,
+      "latitude": -8.667115680090882,
+      "address": "Jl. Merdeka No.1, Renon, Kec. Denpasar Tim., Kota Denpasar, Bali 80239",
+      "email": "betutu@ibunia.com",
+      "phone": "082339134073",
+      "images": [
+        "https://ibunia.com/wp-content/uploads/2020/08/1-2.jpg",
+        "https://media-cdn.tripadvisor.com/media/photo-s/19/e8/2b/b2/img-20191103-102126-largejpg.jpg"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Warung Lesehan Mertha Sari",
+      "longitude": 115.46290181190207,
+      "latitude": -8.549930663470544, 
+      "address": "CFX7+W4H, Jl. Kresna, Pesinggahan, Kec. Dawan, Kabupaten Klungkung, Bali 80761",
+      "email": "mertasari@gmail.com",
+      "phone": " (0366)30406",
+      "images": [
+        "https://youimg1.tripcdn.com/target/100m060000001nacyB22A.jpg",
+        "https://www.putrinyanormal.com/wp-content/uploads/2020/02/sate-lilit-paling-enak-sepulau-bali-1.jpg"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Warung Bu Komang Special Nasi Jinggo",
+      "longitude": 115.22458632391647 ,
+      "latitude": -8.458220701796037, 
+      "address": "Jl. Bedugul No.99, Sidakarya, Denpasar Selatan, Kota Denpasar, Bali 80225",
+      "email": "wrbukomang@gmail.com",
+      "phone": "081936063670",
+      "images": [
+        "https://cdn-2.tstatic.net/travel/foto/bank/images/nasi-jinggo-om-gundul.jpg",
+        "https://www.kooliner.com/blog/wp-content/uploads/2017/06/nasi.jpg"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Warung Nasi Ayam Bu Oki",
+      "longitude": 115.15346117042391 ,
+      "latitude": -8.655415421384319, 
+      "address": "Jl. Celagi Basur No.3Y, Jimbaran, Kec. Kuta Sel., Kabupaten Badung, Bali 80361",
+      "email": "nasiayambuoki@gmail.com",
+      "phone": "081709436723",
+      "images": [
+        "https://s3.ap-southeast-2.amazonaws.com/thebalibible.com/uploads/images/venue/0d4022fafe4fd3f1f00626cb1113d298.jpg?v=1",
+        "https://media-cdn.tripadvisor.com/media/photo-s/14/4a/a7/31/caption.jpg"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Serombotan Me Ade",
+      "longitude": 115.25048194073857 ,
+      "latitude": -8.64307726092454, 
+      "address": "Jl. Kejanti No.2, Kesiman Kertalangu, Kec. Denpasar Tim., Kota Denpasar, Bali 80237",
+      "email": "meadeserombotan@gmail.com",
+      "phone": "087861565076",
+      "images": [
+        "https://scontent.fsoc2-1.fna.fbcdn.net/v/t1.6435-9/96580590_261564011916136_2238021915081965568_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=9267fe&_nc_eui2=AeHmOSm_0uoy1J9htteYTdcmZtFea4foI5Nm0V5rh-gjkzbyr-nf5DVk4ioxqP-KgNION5a-bzk3tCCQcCviCD8d&_nc_ohc=rSsoR49LpsgAX9EaTHD&_nc_ht=scontent.fsoc2-1.fna&oh=00_AT8gjsnOxlu0GiqJDeV8hQtBtjaGu3mqWNvYLUAZ8VdL8w&oe=62BA88C8",
+        "https://scontent.fsoc2-1.fna.fbcdn.net/v/t39.30808-6/241299686_618951999510667_982638363042752262_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=8bfeb9&_nc_eui2=AeH3pd4dLKQbYHSFyJMkBZ8pJxkCB6rk4pMnGQIHquTik-tyJCnRIWkZeJkCCCA666ecPs-F9jGm_TwJxZU7deHT&_nc_ohc=DDmVfqUMO4UAX8GTa_S&tn=B9W27h00bsvooYL9&_nc_zt=23&_nc_ht=scontent.fsoc2-1.fna&oh=00_AT_DFPGB0t7YhW93Vt9p81TPTsMsCp-XLs6nB9qN-lnBbw&oe=629918C7"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Bubur Bali Bu Jero",
+      "longitude": 115.19921168715729,
+      "latitude": -8.437793860527794, 
+      "address": "Jl. Gn. Agung No.105, Pemecutan, Kec. Denpasar Utara, Kota Denpasar, Bali 80111",
+      "email": "buburbujero@gmail.com",
+      "phone": "082145107355",
+      "images": [
+        "https://scontent.fsoc2-1.fna.fbcdn.net/v/t1.6435-9/100997481_3289259044426776_1577385013572272128_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=8bfeb9&_nc_eui2=AeG_ZIk3LS5HtCs2ZaarSUjS4y79juGxtYvjLv2O4bG1i1fOANI_0CSID3QYuKBplJaqZ2-2eHk1fdKiBH5uLoP-&_nc_ohc=riBX9QhPD_MAX8wID1E&_nc_ht=scontent.fsoc2-1.fna&oh=00_AT-opH7ZORmy8UjENDoqBCkejhYRtxU-LqGF7IbbyJbDzA&oe=62BA07B0",
+        "https://scontent.fsoc2-1.fna.fbcdn.net/v/t1.6435-9/83776734_3289259257760088_7924269172844920832_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=8bfeb9&_nc_eui2=AeGkUGP5hFX4uYPsvIoGNWav7H3xrrpI-xzsffGuukj7HDRjZlLT1YgdAQ2oPvZjDMrur80hjEh_sT2ui5pzwlOt&_nc_ohc=0XxTLeA6Q-MAX9HuRPL&_nc_ht=scontent.fsoc2-1.fna&oh=00_AT9zdKZ14q6gWDZJFRQUBexaOMmZLi1O9aIfMfaT92wPyA&oe=62BBFD80"
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Sate Plecing Arjuna bali",
+      "longitude": 115.27217935505763,
+      "latitude": -8.340074217000483,  
+      "address": "Jl. Arjuna No.47, Dauh Puri Kaja, Kec. Denpasar Utara, Kota Denpasar, Bali 80232",
+      "email": "sateplecingarjuna@gmail.com",
+      "phone": " (0361)222504",
+      "images": [
+        "https://www.denpasarkota.go.id/uploads/bisnis/Sate_Plecing_Arjuna:_Pedas_dan_Lezat_628982.jpeg",
+        "https://gadisrakus.files.wordpress.com/2016/10/img_0704.jpg"
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Bali Timbungan",
+      "longitude": 115.27217935505763,
+      "latitude": -8.340074217000483,  
+      "address": "Jl. Sunset Road No.88, Kuta, Kec. Kuta, Kabupaten Badung, Bali 80361",
+      "email": "balitimbungankuta@gmail.com",
+      "phone": "0811-3800-3222",
+      "images": [
+        "http://www.jajanbeken.com/wp-content/uploads/2018/11/jajanbeken-bebek-timbungan-price-1024x575.jpg",
+        "https://b.zmtcdn.com/data/pictures/1/19015201/4eca071d01f27f33a5d7a668c1fd490b.jpg"
+      ]
     }
   ]
 }
