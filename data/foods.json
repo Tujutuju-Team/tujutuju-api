@@ -90,6 +90,60 @@
         "https://assets.promediateknologi.com/crop/0x0:0x0/750x500/photo/kulinear/2021/09/61664380_2184677704964778_6262634625662253327_n.jpg"
       ],
       "restaurants": [{ "id": 10 }]
+    },
+    {
+      "name": "Tum Ayam",
+      "description": "Tum umumnya adalah sumber protein yang dibungkus daun pisang kemudian di kukus.",
+      "images": [
+        "https://img-global.cpcdn.com/recipes/3bbfa04c9ec4d08d/680x482cq70/tum-ayam-khas-bali-foto-resep-utama.jpg",
+        "https://img-global.cpcdn.com/recipes/eee93c742d6977b3/680x482cq70/tum-ayam-khas-bali-asli-enak-wajib-coba-foto-resep-utama.jpg"
+      ],
+      "restaurants": [{ "id": 11 }]
+    },
+    {
+      "name": "Tipat Cantok",
+      "description": "Tipat cantok merupakan salah satu makanan khas Bali yang terbuat dari sayuran rebus dan ketupat serta disajikan dengan bumbu kacang.",
+      "images": [
+        "https://cdn.yummy.co.id/content-images/images/20201108/IGTq6rUfeAfXVJuotYVb4WFb2ACy7fvT-31363034383232393936d41d8cd98f00b204e9800998ecf8427e_800x800.jpg",
+        "https://asset.kompas.com/crops/hdb7Bnk9CHfvcgE46IwlyoTc5Fw=/0x183:1000x850/750x500/data/photo/2020/11/05/5fa3a7f6217f3.jpg"
+      ],
+      "restaurants": [{ "id": 12 }]
+    },
+    {
+      "name": "Rujak Bulung",
+      "description": "Rujak bulung menggunakan rumput laut bulung boni sebagai bahan dasar pembuatan.",
+      "images": [
+        "https://img-global.cpcdn.com/recipes/a0e60bb50b48ca6c/680x482cq70/rujak-bulung-khas-bali-foto-resep-utama.jpg",
+        "https://beritabali.com/assets/posting/berita_220302030258_Fakta-faktaUnikRujakBulungSajianMakananKhasBali.jpg"
+      ],
+      "restaurants": [{ "id": 13 }]
+    },
+    {
+      "name": "Tipat Blayag",
+      "description": "Blayag adalah makanan tradisional khas Buleleng, berupa tipat yang dibungkus gulungan janur, disajikan dengan sayur urap, ayam sisir, sambel, kedelai goreng, keripik kulit, dan ayam bumbu kuah.",
+      "images": [
+        "http://www.risacateringbali.com/wp-content/uploads/2015/09/Blayag-Singaraja.jpg",
+        "https://incipincip.com/wp-content/uploads/2019/06/tipat-blayag-singaraja-768x405.jpg"
+      ],
+      "restaurants": [{ "id": 14 }]
+    },
+    {
+      "name": "Komoh",
+      "description": "Komoh merupakan hidangan sup yang berisi daging. Daging yang digunakan bisa berasal dari ayam, itik, entog, penyu atau babi. Terkadang, makanan ini juga bisa berisi jeroan dan kulit hewan.",
+      "images": [
+        "https://asset.kompas.com/crops/VFsRoJe-67VIij2WKV1Ln8EVGPQ=/26x45:657x465/750x500/data/photo/2021/03/15/604ed3307a4d5.jpg",
+        "https://www.resepistimewa.com/wp-content/uploads/resep-sate-komoh.jpg"
+      ],
+      "restaurants": [{ "id": 15 }]
+    },
+    {
+      "name": "Jukut Ares",
+      "description": "Jukut ares adalah sayuran yang terbuat dari batang pohon pisang muda.",
+      "images": [
+        "https://asset.kompas.com/crops/l7-08xFUi8go89dBmUdyLZdtavg=/0x0:996x664/750x500/data/photo/2020/11/05/5fa3a873825dd.jpg",
+        "https://imgx.sonora.id/crop/0x0:0x0/360x240/photo/2021/01/12/3103093755.jpg"
+      ],
+      "restaurants": [{ "id": 16 }]
     }
   ]
 }

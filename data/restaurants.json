@@ -130,6 +130,72 @@
         "http://www.jajanbeken.com/wp-content/uploads/2018/11/jajanbeken-bebek-timbungan-price-1024x575.jpg",
         "https://b.zmtcdn.com/data/pictures/1/19015201/4eca071d01f27f33a5d7a668c1fd490b.jpg"
       ]
+    },
+    {
+      "id": 11,
+      "name": "Warung Ni Wayan Suji",
+      "longitude": 115.22679496040438, 
+      "latitude": -8.478185542667797,  
+      "address": "Jl. Nusa Kambangan No.113, Dauh Puri Kauh, Kec. Denpasar Bar., Kota Denpasar, Bali 80113",
+      "email": "wrnisuji@gmail.com",
+      "phone": "081391066021",
+      "images": [
+        "https://scontent.fsub2-2.fna.fbcdn.net/v/t1.6435-9/59121129_2165238960233622_7797213899811454976_n.jpg?stp=dst-jpg_p960x960&_nc_cat=106&ccb=1-7&_nc_sid=a26aad&_nc_eui2=AeEC_UHihy1lQfYY6_ZI2JYnNHymlz5ZLP40fKaXPlks_hLDIE9eYAAXjT6SgNSlXOWId7LT2l1NKeu41idX97ja&_nc_ohc=ph-DQS4Um2cAX9a1mXm&_nc_ht=scontent.fsub2-2.fna&oh=00_AT-DxcIdCVApl-vDGLOZiUVvOlKWbQZPPEfIsPGSIQ23zA&oe=62B993AF",
+        "https://bellybutterfly.files.wordpress.com/2014/10/dsc03186.jpg"
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Warung Tipat Cantok Aulia",
+      "longitude": 115.2133454143335, 
+      "latitude": -8.463682239392526,   
+      "address": "Jl. Tukad Batanghari No.58, Panjer, Denpasar Selatan, Kota Denpasar, Bali 80225",
+      "email": "auliatipat@gmail.com",
+      "phone": "081547478295",
+      "images": [
+        "https://1.bp.blogspot.com/-gyXBnXQCCtw/XTRx6JmMR2I/AAAAAAAAO6Y/SVUVjqJGx5AVRRi5xF6Af-ZOQ_q-dTWkgCLcBGAs/s1600/11.jpg",
+        "https://1.bp.blogspot.com/-qoM6NQDighk/XTRx6K020RI/AAAAAAAAO6c/FqOOma4zwJ8vBROd1ceZhm97g-ATLQCRQCLcBGAs/s1600/12.jpg"
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Warung Men Runtu",
+      "longitude": 115.26659368326241, 
+      "latitude": -8.510976353059453,   
+      "address": "Jl. Sekuta No.32, Sanur, Denpasar Selatan, Kota Denpasar, Bali 80228",
+      "email": "menruntu@gmail.com",
+      "phone": "081916116633",
+      "images": [
+        "http://i.imgur.com/hrngUJK.jpg",
+        "https://1.bp.blogspot.com/-gelMAK1CKg0/WHWGd1mN1PI/AAAAAAAAP1s/yRxgt4V5CigpYIGQ68jgq_V5EcomTDUUQCLcB/s1600/DSCN8003.JPG"
+      ]
+    },
+    {
+      "id": 14,
+      "name": "Tipat Blayag Bu Agus",
+      "longitude": 115.19801089748479,
+      "latitude": -8.417628417564968,   
+      "address": "Jalan Tukad Yeh Aya No. 44, Panjer, Denpasar Selatan, Dauh Puri Klod, Denpasar, Kota Denpasar, Bali 80225",
+      "email": "tipatblayagbuagus@gmail.com",
+      "phone": "085792848183",
+      "images": [
+        "https://kooliner.com/blog/wp-content/uploads/2017/07/blayag-kuah1.jpg",
+        "https://i0.wp.com/masbrooo.com/wp-content/uploads/2018/01/img_0216.jpg"
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Warung Celagi Kesiman",
+      "longitude": 115.23742219036443,
+      "latitude": -8.358254353591303, 
+      "address": "Jl. Noja No.23, Kesiman Petilan, Kec. Denpasar Tim., Kota Denpasar, Bali 80237",
+      "email": "celagiwarung@gmai.com",
+      "phone": "08214618-]1647",
+      "images": [
+        "https://scontent.fsub2-4.fna.fbcdn.net/v/t1.6435-9/32730235_1675912945858944_70056603134459904_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=8bfeb9&_nc_eui2=AeHw_C0KjfRH643QR8IrcbgjHJ0DnScIERYcnQOdJwgRFohszuiwuG0bdEhmjROZ_-XI1oStXwgG4g3e9HrWZlSg&_nc_ohc=4GIgs02H9-oAX9eFV0m&_nc_ht=scontent.fsub2-4.fna&oh=00_AT-7z6cTqpCM7bJzV-gptEa4jnCetJzTHoToP1uu722lLA&oe=62BBE84F",
+        "https://scontent.fsub2-1.fna.fbcdn.net/v/t1.18169-9/20429604_1361026884014220_3624004851745529620_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=8bfeb9&_nc_eui2=AeG-96TIMa2O0eX30s6l671uLSxfAO9gWo4tLF8A72Baji2eSsJJAIcj_Qw6MgyyCQ36ksgywTORF-60325n6e-j&_nc_ohc=2Puec3hliycAX8819Y-&_nc_ht=scontent.fsub2-1.fna&oh=00_AT-mwsV6HPIiyz7R5RX9kesqOH2qKPkPWKfGHkR95hXZ6Q&oe=62BCAF7F"
+        
+      ]
     }
   ]
 }

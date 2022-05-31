@@ -3,13 +3,46 @@
   "data": [
     {
       "name": "Pantai Kuta",
-      "address": "Jl. Kuta, Kuta, Bali",
-      "description": "Pantai keren di Bali",
-      "longitude": 115.2429,
-      "latitude": -8.7881,
+      "address": "Jl. Pantai Kuta, Kuta, Bali 80361",
+      "description": "Pantai Kuta adalah sebuah tempat pariwisata yang terletak di kecamatan Kuta, sebelah selatan Kota Denpasar, Bali, Indonesia. Daerah ini merupakan sebuah tujuan wisata turis mancanegara dan telah menjadi objek wisata andalan Pulau Bali sejak awal tahun 1970-an.",
+      "longitude": 115.16982553725343,
+      "latitude": -8.505250479325278, 
       "images": [
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/The_View_of_Kuta_Beach%2C_Bali.jpg/250px-The_View_of_Kuta_Beach%2C_Bali.jpg",
-        "https://i2.wp.com/blog.tripcetera.com/id/wp-content/uploads/2020/03/leebudihart_76864081_2484833498431751_3194446755026370817_n-1024x768.jpg"
+        "https://asaljeplak.my.id/berita/storage/sites/2/2021/12/pantai-kuta.jpg",
+        "https://i0.wp.com/www.sewamobilbali1st.com/wp-content/uploads/2015/08/Pantai-Kuta-Obyek-Wisata-Terkenal-di-Bali-Feature.jpg?fit=700%2C400&ssl=1"
+      ]
+    },
+    {
+      "name": "Pantai Melasti",
+      "address": "Jalan Melasti Ungasan, Kecamatan Kuta Selatan, Kebupaten Badung, Bali 80362",
+      "description": "Pantai Melasti adalah salah satu pantai yang sangat eksotis karena lokasinya sangat tersembunyi dan berada di balik tebing dan memiliki cerita sejarah yang hampir sama dengan pantai pandawa. Lokasi pantai melasti yang berada di balik bukit kapur yang menjulang tinggi sehingga untuk mencapai para pengunjung harus melewati dinding tebing kapur yang begitu mempesona hingga sampai bibir pantai yang berpasir puth nan eksotis yang di lengkapi dengan kolam kolam kecil bagaikan kolam alami.",
+      "longitude": 115.16994831227325,
+      "latitude": -8.665550288075988, 
+      "images": [
+        "https://salsawisata.b-cdn.net/wp-content/uploads/2021/10/Pantai-Melasti.jpg",
+        "https://cdn.langit7.id/langit7/article/l7/2022/02/01/melastibeach.official.jpeg"
+      ]
+    },
+    {
+      "name": "Sangeh Monkey Forest",
+      "address": "Jl. Brahmana, Sangeh, Kec. Abiansemal, Kabupaten Badung, Bali 80353",
+      "description": "Monkey forest Sangeh di Badung Bali ini merupakan hutan dihuni oleh ratusan monyet jinak dan didominasi pohon pala menjulang tinggi sampai 50 meter, sehingga sangat rindang dan terasa sejuk.",
+      "longitude": 115.19880685402813,
+      "latitude": -8.26709000926535, 
+      "images": [
+        "https://www.balipost.com/wp-content/uploads/2021/02/balipostcom_objek-wisata-sangeh-sepi-pendapatan-tiket-masuk-tak-menutupi-biaya-pakan_01-696x464.jpg",
+        "https://4.bp.blogspot.com/-0SHcsDqCD3c/UrB8XhjWKFI/AAAAAAAAXkU/5ycw8m9q8q0/s1600/4.jpg"
+      ]
+    },
+    {
+      "name": "Bali Zoo",
+      "address": "Jl. Raya Singapadu, Singapadu, Kec. Sukawati, Kabupaten Gianyar, Bali 80582",
+      "description": "Bali Zoo yang didirikan di tahun 2002 merupakan kebun sekaligus area konservasi binatang pertama di kawasan Bali.",
+      "longitude": 115.2934625533783,
+      "latitude": -8.418811831193379, 
+      "images": [
+        "https://s-light.tiket.photos/t/01E25EBZS3W0FY9GTG6C42E1SE/rsfit19201280gsm/events/2022/01/24/325f5be9-5ee3-481b-b9bf-c4b91c64c4cd-1643018195456-b4373f0f5b8d5479edb84bb7887faad9.jpg",
+        "https://anekatempatwisata.com/wp-content/uploads/2020/10/1-Bali-Zoo-Wisata-Edukasi-di-Bali-yang-Cocok-Dikunjungi-Bersama-Anak-1200x600.jpg"
       ]
     }
   ]
