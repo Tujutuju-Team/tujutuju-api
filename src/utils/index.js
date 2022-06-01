@@ -3,5 +3,7 @@ module.exports = {
   jwt: require("./jwt"),
   asyncWrapper: require("./asyncWrapper"),
   pagination: require("./pagination"),
-  bucket: require("./bucket")
+  file: require("./file"),
+  io: require("./io"),
+  storage: require("./storage")
 };
