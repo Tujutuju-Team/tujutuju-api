@@ -24,38 +24,45 @@ exports.up = function (db) {
       password: { type: "string", notNull: true },
       name: { type: "string", notNull: true },
       phone: { type: "string" },
-      profile_picture: { type: "string" }
+      avatar: { type: "text" }
     });
   }
   async function createPlaceTable() {
     return db.createTable("places", {
       id: { type: "int", primaryKey: true, autoIncrement: true },
       name: { type: "string", notNull: true },
-      address: { type: "string", notNull: true },
-      description: { type: "string", notNull: true }
+      address: { type: "text", notNull: true },
+      longitude: { type: "decimal", notNull: true },
+      latitude: { type: "decimal", notNull: true },
+      description: { type: "text", notNull: true },
+      images: { type: "json", defaultValue: "[]" }
     });
   }
   async function createRestaurantTable() {
     return db.createTable("restaurants", {
       id: { type: "int", primaryKey: true, autoIncrement: true },
       name: { type: "string", notNull: true },
-      address: { type: "string", notNull: true },
       email: { type: "string" },
-      phone: { type: "string" }
+      phone: { type: "string" },
+      longitude: { type: "decimal", notNull: true },
+      latitude: { type: "decimal", notNull: true },
+      address: { type: "text", notNull: true },
+      images: { type: "json", defaultValue: "[]" }
     });
   }
   async function createFoodTable() {
     return db.createTable("foods", {
       id: { type: "int", primaryKey: true, autoIncrement: true },
       name: { type: "string", notNull: true },
-      description: { type: "string", notNull: true }
+      description: { type: "text", notNull: true },
+      images: { type: "json", defaultValue: "[]" }
     });
   }
   async function createPlaceReviewTable() {
     return db.createTable("place_reviews", {
       id: { type: "int", primaryKey: true, autoIncrement: true },
       rating: { type: "int", notNull: true },
-      description: { type: "string" },
+      description: { type: "text" },
       user_id: {
         type: "int",
         notNull: true,
@@ -88,7 +95,7 @@ exports.up = function (db) {
     return db.createTable("restaurant_reviews", {
       id: { type: "int", primaryKey: true, autoIncrement: true },
       rating: { type: "int", notNull: true },
-      description: { type: "string" },
+      description: { type: "text" },
       user_id: {
         type: "int",
         notNull: true,
@@ -120,7 +127,7 @@ exports.up = function (db) {
   async function createMenuTable() {
     return db.createTable("menus", {
       id: { type: "int", primaryKey: true, autoIncrement: true },
-      description: { type: "string" },
+      description: { type: "text" },
       price: { type: "decimal", notNull: true },
       food_id: {
         type: "int",
@@ -168,17 +175,23 @@ exports.up = function (db) {
       foods.push(
         db.insert(
           "foods",
-          ["name", "description"],
-          [`Rawon-${i}`, "Rawon adalah masakan khas Surabaya."]
+          ["name", "description", "images"],
+          [
+            `Rawon-${i}`,
+            "Rawon adalah masakan khas Surabaya.",
+            `["http://url1.com", "http://url2.com"]`
+          ]
         )
       );
       restaurants.push(
         db.insert(
           "restaurants",
-          ["name", "address", "email", "phone"],
+          ["name", "address", "longitude", "latitude", "email", "phone"],
           [
             `Kedai Super Enak - ${i}`,
             "123 Main St",
+            -6.23,
+            -12.23323,
             `superenak_${i}@mail.com`,
             "1234567890"
           ]
@@ -187,10 +200,12 @@ exports.up = function (db) {
       places.push(
         db.insert(
           "places",
-          ["name", "address", "description"],
+          ["name", "address", "longitude", "latitude", "description"],
           [
             `Pantai Kuta - ${i}`,
             `123_${i} Main St`,
+            -6.23,
+            -12.23323,
             "Pantai pasir yang keren di Bali"
           ]
         )
