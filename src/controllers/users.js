@@ -1,6 +1,8 @@
+const fs = require("fs");
+const path = require("path");
 const { constants: status } = require("http2");
 const { User } = require("../repository");
-const { asyncWrapper, hash } = require("../utils");
+const { asyncWrapper, hash, storage: fileStorage } = require("../utils");
 
 async function me(req, res) {
   const { sub: userEmail } = req.user;
@@ -52,7 +54,47 @@ async function changePassword(req, res) {
   });
 }
 
+async function uploadAvatar(req, res) {
+  const storage = fileStorage.getStorage();
+
+  const fileReadStream = fs.createReadStream(req.file.path);
+  const fileName = req.file.filename;
+  let avatarUrl;
+
+  const userEmail = req.user.sub;
+  const user = await User.findByEmail(userEmail);
+  if (!user) {
+    return res.status(status.HTTP_STATUS_NOT_FOUND).json({
+      error: {
+        code: status.HTTP_STATUS_NOT_FOUND,
+        message: "User not found"
+      }
+    });
+  }
+
+  avatarUrl = await storage.save({
+    readable: fileReadStream,
+    fileName: fileName
+  });
+
+  // TODO: delete existing avatar if exists (async)
+  // user.avatar &&
+  //   storage.remove(path.basename(user.avatar)).catch(console.error);
+
+  // update avatar to refer cloud storage bucket file
+  const updatedUser = new User({ ...user, avatar: avatarUrl });
+  await updatedUser.update();
+
+  res.json({
+    meta: {
+      code: status.HTTP_STATUS_OK,
+      message: "Successfully uploaded avatar"
+    }
+  });
+}
+
 module.exports = {
   me: asyncWrapper(me),
-  changePassword: asyncWrapper(changePassword)
+  changePassword: asyncWrapper(changePassword),
+  uploadAvatar: asyncWrapper(uploadAvatar)
 };

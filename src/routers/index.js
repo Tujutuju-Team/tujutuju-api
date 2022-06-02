@@ -1,11 +1,21 @@
+const path = require("path");
 const express = require("express");
 const { body, query, param } = require("express-validator");
 const controllers = require("../controllers");
-const { validation, auth } = require("../middlewares");
+const { validation, auth, multer } = require("../middlewares");
+const { path: pathUtils } = require("../utils");
 
 const Router = express.Router();
 
 Router.use(express.json());
+
+process.env.NODE_ENV === "development" &&
+  Router.use(
+    "/static",
+    express.static(
+      path.join(pathUtils.APP_DIR, "..", process.env.LOCAL_STORAGE_DIR)
+    )
+  );
 
 Router.get("/me", auth.isAuth, controllers.users.me);
 
@@ -21,6 +31,12 @@ Router.put(
   controllers.users.changePassword
 );
 
+Router.post(
+  "/me/avatar",
+  auth.isAuth,
+  multer.uploadSingleFile("avatar"),
+  controllers.users.uploadAvatar
+);
 Router.post(
   "/auth/login",
   body("email", "Invalid email").isEmail(),
