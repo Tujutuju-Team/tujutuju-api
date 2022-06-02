@@ -39,7 +39,7 @@ const multerInstance = multer({
 
 function uploadSingleFile(fieldName = "") {
   return function (req, res, next) {
-    multer.multer.single(fieldName)(req, res, (error) => {
+    multerInstance.single(fieldName)(req, res, (error) => {
       if (error) {
         console.error(error);
         return res.status(status.HTTP_STATUS_BAD_REQUEST).send({
