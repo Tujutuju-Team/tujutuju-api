@@ -1,11 +1,10 @@
 const { query } = require("../utils/db");
 
 class Food {
-  constructor({ name, price, description, image }) {
+  constructor({ name = "", description = "", images = [] }) {
     this.name = name;
-    this.price = price;
     this.description = description;
-    this.image = image;
+    this.images = images;
   }
 
   static count = async () => {

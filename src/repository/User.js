@@ -6,13 +6,15 @@ class User {
     name = "",
     email = "",
     password = "",
-    profilePicture = ""
+    phone = "",
+    avatar = ""
   }) {
     this.id = id;
     this.name = name;
     this.email = email;
     this.password = password;
-    this.profilePicture = profilePicture;
+    this.phone = phone;
+    this.avatar = avatar;
   }
 
   static findById = async (id) => {
@@ -37,8 +39,8 @@ class User {
 
   update = async () => {
     return query(
-      "UPDATE users SET name = $1, email = $2, password = $3, profile_picture = $4 WHERE id = $5",
-      [this.name, this.email, this.password, this.profilePicture, this.id]
+      "UPDATE users SET name = $1, email = $2, password = $3, avatar = $4 WHERE id = $5",
+      [this.name, this.email, this.password, this.avatar, this.id]
     );
   };
 
