@@ -1,5 +1,8 @@
 const path = require("path");
-const { file, io } = require(".");
+const fs = require("fs");
+const file = require("./file");
+const io = require("./io");
+const pathUtils = require("./path");
 const { Storage } = require("@google-cloud/storage");
 
 let storage;
@@ -22,10 +25,12 @@ function getStorage() {
         break;
 
       case "development":
-        storage = new LocalStorage(LOCAL_STORAGE_DIR);
+        const dir = path.join(pathUtils.APP_DIR, "..", LOCAL_STORAGE_DIR);
+        storage = new LocalStorage(dir);
+        break;
 
       default:
-        throw new Error("NODE_ENV is not defined");
+        throw new Error("Unknown NODE_ENV !");
     }
   }
 
@@ -37,15 +42,17 @@ class LocalStorage {
     this.dir = dir;
   }
 
-  async save({ readable, filename = "" }) {
-    const dest = path.join(this.dir, filename);
+  async save({ readable, fileName = "" }) {
+    const dest = path.join(this.dir, fileName);
     const isExist = await file.isPathExists(dest);
     if (isExist) {
       throw new Error("file already exists");
     }
 
     await io.copy(readable, fs.createWriteStream(dest));
-    return dest;
+
+    const { DOMAIN } = process.env;
+    return `http://${DOMAIN}/static/${fileName}`;
   }
 
   async remove(fileName) {
@@ -63,8 +70,8 @@ class GoogleCloudStorage {
     this.#bucket = this.#storage.bucket(bucketName);
   }
 
-  async save({ readable, filename = "" }) {
-    const blob = this.#bucket.file(filename);
+  async save({ readable, fileName = "" }) {
+    const blob = this.#bucket.file(fileName);
     const writeableStream = blob.createWriteStream();
 
     await io.copy(readable, writeableStream);

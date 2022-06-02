@@ -5,5 +5,6 @@ module.exports = {
   pagination: require("./pagination"),
   file: require("./file"),
   io: require("./io"),
-  storage: require("./storage")
+  storage: require("./storage"),
+  path: require("./path")
 };

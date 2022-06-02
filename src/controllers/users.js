@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const { constants: status } = require("http2");
 const { User } = require("../repository");
-const { asyncWrapper, hash, bucket } = require("../utils");
+const { asyncWrapper, hash, storage: fileStorage } = require("../utils");
 
 async function me(req, res) {
   const { sub: userEmail } = req.user;
@@ -55,20 +55,14 @@ async function changePassword(req, res) {
 }
 
 async function uploadAvatar(req, res) {
-  const file = fs.createReadStream(req.file.path);
-  const filename = path.basename(req.file.path);
-  const uploadFile =
-    process.env.NODE_ENV === "production"
-      ? bucket.uploadFile
-      : bucket.uploadFileLocal;
-  const deleteFile =
-    process.env.NODE_ENV === "production"
-      ? bucket.deleteFile
-      : bucket.deleteFileLocal;
-  let uploadedLink = "";
+  const storage = fileStorage.getStorage();
+
+  const fileReadStream = fs.createReadStream(req.file.path);
+  const fileName = req.file.filename;
+  let avatarUrl;
 
   const userEmail = req.user.sub;
-  const user = await User.findById(userEmail);
+  const user = await User.findByEmail(userEmail);
   if (!user) {
     return res.status(status.HTTP_STATUS_NOT_FOUND).json({
       error: {
@@ -78,23 +72,18 @@ async function uploadAvatar(req, res) {
     });
   }
 
-  try {
-    uploadedLink = uploadFile(file, filename);
-  } catch (error) {
-    return res.status(status.HTTP_STATUS_INTERNAL_SERVER_ERROR).json({
-      error: {
-        code: status.HTTP_STATUS_INTERNAL_SERVER_ERROR,
-        message: "Failed uploading avatar"
-      }
-    });
-  }
+  avatarUrl = await storage.save({
+    readable: fileReadStream,
+    fileName: fileName
+  });
+
+  // TODO: delete existing avatar if exists (async)
+  // user.avatar &&
+  //   storage.remove(path.basename(user.avatar)).catch(console.error);
 
   // update avatar to refer cloud storage bucket file
-  const updatedUser = new User({ ...user, avatar: uploadedLink });
+  const updatedUser = new User({ ...user, avatar: avatarUrl });
   await updatedUser.update();
-
-  // delete existing avatar if exists (async)
-  user.avatar && deleteFile(user.avatar);
 
   res.json({
     meta: {
