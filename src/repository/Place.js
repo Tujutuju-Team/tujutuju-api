@@ -1,11 +1,20 @@
 const { query } = require("../utils/db");
 
 class Place {
-  constructor({ name, address, description, image }) {
+  constructor({
+    name = "",
+    address = "",
+    longitude = 0.0,
+    latitude = 0.0,
+    description = "",
+    images = []
+  }) {
     this.name = name;
     this.address = address;
     this.description = description;
-    this.image = image;
+    this.longitude = longitude;
+    this.latitude = latitude;
+    this.images = images;
   }
 
   static findById = async (id) => {

@@ -23,8 +23,8 @@ exports.up = function (db) {
       email: { type: "string", notNull: true, unique: true },
       password: { type: "string", notNull: true },
       name: { type: "string", notNull: true },
-      phone: { type: "string" },
-      avatar: { type: "text" }
+      phone: { type: "string", defaultValue: "" },
+      avatar: { type: "text", defaultValue: "" }
     });
   }
   async function createPlaceTable() {
@@ -42,8 +42,9 @@ exports.up = function (db) {
     return db.createTable("restaurants", {
       id: { type: "int", primaryKey: true, autoIncrement: true },
       name: { type: "string", notNull: true },
-      email: { type: "string" },
-      phone: { type: "string" },
+      email: { type: "string", defaultValue: "" },
+      phone: { type: "string", defaultValue: "" },
+      description: { type: "text", defaultValue: "" },
       longitude: { type: "decimal", notNull: true },
       latitude: { type: "decimal", notNull: true },
       address: { type: "text", notNull: true },
@@ -62,7 +63,7 @@ exports.up = function (db) {
     return db.createTable("place_reviews", {
       id: { type: "int", primaryKey: true, autoIncrement: true },
       rating: { type: "int", notNull: true },
-      description: { type: "text" },
+      description: { type: "text", defaultValue: "" },
       user_id: {
         type: "int",
         notNull: true,
@@ -95,7 +96,7 @@ exports.up = function (db) {
     return db.createTable("restaurant_reviews", {
       id: { type: "int", primaryKey: true, autoIncrement: true },
       rating: { type: "int", notNull: true },
-      description: { type: "text" },
+      description: { type: "text", defaultValue: "" },
       user_id: {
         type: "int",
         notNull: true,
@@ -127,7 +128,7 @@ exports.up = function (db) {
   async function createMenuTable() {
     return db.createTable("menus", {
       id: { type: "int", primaryKey: true, autoIncrement: true },
-      description: { type: "text" },
+      description: { type: "text", defaultValue: "" },
       price: { type: "decimal", notNull: true },
       food_id: {
         type: "int",

@@ -1,12 +1,24 @@
 const { query } = require("../utils/db");
 
 class Restaurant {
-  constructor({ name, address, email, phone, image }) {
+  constructor({
+    name = "",
+    longitude = 0.0,
+    latitude = 0.0,
+    address = "",
+    email = "",
+    phone = "",
+    description = "",
+    images = []
+  }) {
     this.name = name;
+    this.longitude = longitude;
+    this.latitude = latitude;
     this.address = address;
     this.email = email;
     this.phone = phone;
-    this.image = image;
+    this.description = description;
+    this.images = images;
   }
 
   static findById = async (id) => {
