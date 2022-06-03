@@ -115,7 +115,7 @@ exports.up = function (db) {
         notNull: true,
         foreignKey: {
           name: "fk_restaurant_reviews_restaurants",
-          table: "places",
+          table: "restaurants",
           mapping: "id",
           rules: {
             onDelete: "CASCADE",
