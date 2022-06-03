@@ -32,7 +32,14 @@ class Restaurant {
       ON (restaurants.id = t.restaurant_id);
     `;
     const result = await query(statement, [id]);
-    return result.rows[0];
+    const data = result.rows[0];
+    const { avg, longitude, latitude, restaurant_id, ...rest } = data;
+    return {
+      ...rest,
+      longitude: +longitude,
+      latitude: +latitude,
+      review: { average_rating: +avg }
+    };
   };
 
   static count = async () => {
@@ -55,7 +62,16 @@ class Restaurant {
     `;
 
     const result = await query(statement, [limit, offset]);
-    return result.rows;
+    const data = result.rows;
+    return data.map((r) => {
+      const { avg, longitude, latitude, restaurant_id, ...rest } = r;
+      return {
+        ...rest,
+        longitude: +longitude,
+        latitude: +latitude,
+        review: { average_rating: +avg }
+      };
+    });
   };
 }
 

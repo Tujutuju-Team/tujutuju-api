@@ -12,22 +12,11 @@ async function place(req, res) {
   const id = +req.params.id;
   const limit = +req.query.limit || 10;
   const page = +req.query.page || 1;
-  const url = process.env.DOMAIN + req.path;
+  const { PROTOCOL, DOMAIN } = process.env;
+  const url = PROTOCOL + DOMAIN + req.path;
 
   const pr = new PlaceReview({ placeId: id });
   const result = await pagination.getData(url, limit, page, pr);
-  const data = result.data.map((item) => {
-    return {
-      id: item.review_id,
-      rating: item.rating,
-      description: item.description,
-      author: {
-        id: item.user_id,
-        name: item.name,
-        profile_picture: item.profile_picture
-      }
-    };
-  });
 
   return res.json({
     meta: {
@@ -40,7 +29,7 @@ async function place(req, res) {
       next_page: result.nextUrl,
       prev_page: result.prevUrl
     },
-    data: data
+    data: result.data
   });
 }
 
@@ -48,22 +37,11 @@ async function restaurant(req, res) {
   const id = +req.params.id;
   const limit = +req.query.limit || 10;
   const page = +req.query.page || 1;
-  const url = process.env.DOMAIN + req.path;
+  const { PROTOCOL, DOMAIN } = process.env;
+  const url = PROTOCOL + DOMAIN + req.path;
 
   const rr = new RestaurantReview({ restaurantId: id });
   const result = await pagination.getData(url, limit, page, rr);
-  const data = result.data.map((item) => {
-    return {
-      id: item.review_id,
-      rating: item.rating,
-      description: item.description,
-      author: {
-        id: item.user_id,
-        name: item.name,
-        profile_picture: item.profile_picture
-      }
-    };
-  });
 
   return res.json({
     meta: {
@@ -76,7 +54,7 @@ async function restaurant(req, res) {
       next_page: result.nextUrl,
       prev_page: result.prevUrl
     },
-    data: data
+    data: result.data
   });
 }
 
