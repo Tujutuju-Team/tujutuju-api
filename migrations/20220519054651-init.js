@@ -1,5 +1,6 @@
 "use strict";
 
+const fs = require("fs");
 const bcrypt = require("bcrypt");
 
 var dbm;
@@ -16,7 +17,19 @@ exports.setup = function (options, seedLink) {
   seed = seedLink;
 };
 
-exports.up = function (db) {
+function randomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+async function readFile(path) {
+  return new Promise((res, rej) => {
+    fs.readFile(path, (err, content) => {
+      err ? rej(err) : res(JSON.parse(content).data);
+    });
+  });
+}
+
+exports.up = async function (db) {
   async function createUserTable() {
     return db.createTable("users", {
       id: { type: "int", primaryKey: true, autoIncrement: true },
@@ -159,105 +172,242 @@ exports.up = function (db) {
     });
   }
   async function seedDB() {
+    const MINIMUM_MASTER_DATA = 20;
+    const MINIMUM_RELATION_DATA = 200;
+
+    const [placeSeed, restaurantSeed, foodSeed] = await Promise.all([
+      readFile("./data/places.json"),
+      readFile("./data/restaurants.json"),
+      readFile("./data/foods.json")
+    ]);
+
+    const dataSeed = {
+      places: placeSeed,
+      foods: foodSeed,
+      restaurants: restaurantSeed
+    };
+
     const users = [];
     const places = [];
     const restaurants = [];
     const foods = [];
+    const placeReviews = [];
+    const restaurantReviews = [];
 
-    for (let i = 1; i <= 20; i++) {
-      const password = await bcrypt.hash("12345678", 12);
-      users.push(
+    dataSeed.places.forEach((p) =>
+      places.push(
         db.insert(
-          "users",
-          ["email", "password", "name"],
-          [`superman_${i}@mail.com`, password, `Richard Marcolo-${i}`]
+          "places",
+          ["name", "address", "longitude", "latitude", "description", "images"],
+          [
+            p.name,
+            p.address,
+            p.longitude,
+            p.latitude,
+            p.description,
+            JSON.stringify(p.images)
+          ]
         )
-      );
+      )
+    );
+
+    dataSeed.restaurants.forEach((r) =>
+      restaurants.push(
+        db.insert(
+          "restaurants",
+          [
+            "name",
+            "address",
+            "longitude",
+            "latitude",
+            "email",
+            "phone",
+            "images"
+          ],
+          [
+            r.name,
+            r.address,
+            r.longitude,
+            r.latitude,
+            r.email,
+            r.phone,
+            JSON.stringify(r.images)
+          ]
+        )
+      )
+    );
+
+    dataSeed.foods.forEach((f) =>
       foods.push(
         db.insert(
           "foods",
           ["name", "description", "images"],
-          [
-            `Rawon-${i}`,
-            "Rawon adalah masakan khas Surabaya.",
-            `["http://url1.com", "http://url2.com"]`
-          ]
+          [f.name, f.description, JSON.stringify(f.images)]
         )
+      )
+    );
+
+    for (let i = 1; i <= MINIMUM_MASTER_DATA; i++) {
+      const password = await bcrypt.hash("12345678", 12);
+      const squareImg = "https://source.unsplash.com/random/300×300";
+      const rectangleImg = "https://source.unsplash.com/random/500×300";
+
+      const insertionUser = db.insert(
+        "users",
+        ["email", "password", "name", "avatar"],
+        [`superman_${i}@mail.com`, password, `Richard Marcolo-${i}`, squareImg]
       );
-      restaurants.push(
-        db.insert(
-          "restaurants",
-          ["name", "address", "longitude", "latitude", "email", "phone"],
-          [
-            `Kedai Super Enak - ${i}`,
-            "123 Main St",
-            -6.23,
-            -12.23323,
-            `superenak_${i}@mail.com`,
-            "1234567890"
-          ]
-        )
+      const insertionPlace = db.insert(
+        "places",
+        ["name", "address", "longitude", "latitude", "description", "images"],
+        [
+          `Pantai Kuta - ${i}`,
+          `123_${i} Main St`,
+          randomNumber(-180, 180),
+          randomNumber(-90, 90),
+          "Pantai pasir yang keren di Bali",
+          JSON.stringify([rectangleImg, rectangleImg])
+        ]
       );
-      places.push(
-        db.insert(
-          "places",
-          ["name", "address", "longitude", "latitude", "description"],
-          [
-            `Pantai Kuta - ${i}`,
-            `123_${i} Main St`,
-            -6.23,
-            -12.23323,
-            "Pantai pasir yang keren di Bali"
-          ]
-        )
+      const insertionFood = db.insert(
+        "foods",
+        ["name", "description", "images"],
+        [
+          `Rawon-${i}`,
+          "Rawon adalah masakan khas Surabaya.",
+          JSON.stringify([rectangleImg, rectangleImg])
+        ]
       );
+      const insertionRestaurant = db.insert(
+        "restaurants",
+        [
+          "name",
+          "address",
+          "longitude",
+          "latitude",
+          "email",
+          "phone",
+          "images"
+        ],
+        [
+          `Kedai Super Enak - ${i}`,
+          "123 Main St",
+          randomNumber(-180, 180),
+          randomNumber(-90, 90),
+          `superenak_${i}@mail.com`,
+          "1234567890",
+          JSON.stringify([rectangleImg, rectangleImg])
+        ]
+      );
+
+      users.push(insertionUser);
+      places.push(insertionPlace);
+      foods.push(insertionFood);
+      restaurants.push(insertionRestaurant);
     }
 
-    return Promise.all([...users, ...foods, ...places, ...restaurants]);
+    await Promise.all([users, places, foods, restaurants]);
+
+    for (let i = 1; i <= MINIMUM_RELATION_DATA; i++) {
+      const insertionPlaceReview = db.insert(
+        "place_reviews",
+        ["rating", "description", "user_id", "place_id"],
+        [
+          randomNumber(1, 5),
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos in, maiores consectetur ex amet sit, nesciunt distinctio fugit fuga exercitationem illum hic harum a esse?",
+          randomNumber(1, users.length),
+          randomNumber(1, places.length)
+        ]
+      );
+      const insertionRestaurantReview = db.insert(
+        "restaurant_reviews",
+        ["rating", "description", "user_id", "restaurant_id"],
+        [
+          randomNumber(1, 5),
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos in, maiores consectetur ex amet sit, nesciunt distinctio fugit fuga exercitationem illum hic harum a esse?",
+          randomNumber(1, users.length),
+          randomNumber(1, restaurants.length)
+        ]
+      );
+
+      placeReviews.push(insertionPlaceReview);
+      restaurantReviews.push(insertionRestaurantReview);
+    }
+
+    await Promise.all([placeReviews, restaurantReviews]);
   }
 
-  return createUserTable()
-    .then(createPlaceTable)
-    .then(createRestaurantTable)
-    .then(createFoodTable)
-    .then(createPlaceReviewTable)
-    .then(createRestaurantReviewTable)
-    .then(createMenuTable)
-    .then(seedDB)
-    .catch((err) => console.error(err));
+  try {
+    console.log("Creating master table...");
+    await Promise.all([
+      createUserTable(),
+      createPlaceTable(),
+      createRestaurantTable(),
+      createFoodTable()
+    ]);
+
+    console.log("Creating relation (level-1) table...");
+    await Promise.all([
+      createPlaceReviewTable(),
+      createRestaurantReviewTable(),
+      createMenuTable()
+    ]);
+
+    console.log("Seeding database with initial data...");
+    await seedDB();
+
+    console.log("Done 👌!!");
+  } catch (err) {
+    console.log("Error happened !!");
+    console.error(err);
+    throw err;
+  }
 };
 
-exports.down = function (db) {
+exports.down = async function (db) {
   async function dropUserTable() {
-    return db.dropTable("users");
+    return db.runSql("DROP TABLE IF EXISTS users");
   }
   async function dropPlaceTable() {
-    return db.dropTable("places");
+    return db.runSql("DROP TABLE IF EXISTS places");
   }
   async function dropRestaurantTable() {
-    return db.dropTable("restaurants");
+    return db.runSql("DROP TABLE IF EXISTS restaurants");
   }
   async function dropFoodTable() {
-    return db.dropTable("foods");
+    return db.runSql("DROP TABLE IF EXISTS foods");
   }
   async function dropPlaceReviewTable() {
-    return db.dropTable("place_reviews");
+    return db.runSql("DROP TABLE IF EXISTS place_reviews");
   }
   async function dropRestaurantReviewTable() {
-    return db.dropTable("restaurant_reviews");
+    return db.runSql("DROP TABLE IF EXISTS restaurant_reviews");
   }
   async function dropMenuTable() {
-    return db.dropTable("menus");
+    return db.runSql("DROP TABLE IF EXISTS menus");
   }
+  try {
+    console.log("Dropping (level-1) relation table...");
+    await Promise.all([
+      dropMenuTable(),
+      dropRestaurantReviewTable(),
+      dropPlaceReviewTable()
+    ]);
 
-  return dropMenuTable()
-    .then(dropRestaurantReviewTable)
-    .then(dropPlaceReviewTable)
-    .then(dropFoodTable)
-    .then(dropRestaurantTable)
-    .then(dropPlaceTable)
-    .then(dropUserTable)
-    .catch((err) => console.error(err));
+    console.log("Dropping master table...");
+    await Promise.all([
+      dropFoodTable(),
+      dropRestaurantTable(),
+      dropPlaceTable(),
+      dropUserTable()
+    ]);
+
+    console.log("Done 👌!!");
+  } catch (err) {
+    console.log("Error happened !!");
+    console.error(err);
+    throw err;
+  }
 };
 
 exports._meta = {
