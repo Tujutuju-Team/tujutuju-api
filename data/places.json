@@ -44,6 +44,94 @@
         "https://s-light.tiket.photos/t/01E25EBZS3W0FY9GTG6C42E1SE/rsfit19201280gsm/events/2022/01/24/325f5be9-5ee3-481b-b9bf-c4b91c64c4cd-1643018195456-b4373f0f5b8d5479edb84bb7887faad9.jpg",
         "https://anekatempatwisata.com/wp-content/uploads/2020/10/1-Bali-Zoo-Wisata-Edukasi-di-Bali-yang-Cocok-Dikunjungi-Bersama-Anak-1200x600.jpg"
       ]
+    },
+    {
+      "name": "Waterbom Bali",
+      "address": "Jl. Kartika Plaza, Tuban, Kec. Kuta, Kabupaten Badung, Bali 80361",
+      "description": "Taman rekreasi air yang ramai dengan wahana untuk segala usia, plus restoran, pujasera & bar kolam renang.",
+      "longitude": 115.13148809351523,
+      "latitude": -8.464746261878384, 
+      "images": [
+        "https://www.baliaround.com/wp-content/uploads/2014/02/water-bom.jpg",
+        "https://www.nowbali.co.id/wp-content/uploads/2019/12/Waterbom-7-1024x576.jpg"
+      ]
+    },
+    {
+      "name": "Toya Devasya Hot Spring Waterpark",
+      "address": "Batur Tengah, Kintamani, Kabupaten Bangli, Bali",
+      "description": "Perkemahan & resor mewah yang tenang dengan kolam mata air panas, aktivitas luar ruangan & pemandangan indah.",
+      "longitude": 115.28128927487292,
+      "latitude": -8.046588245859283, 
+      "images": [
+        "https://www.redaksi9.com/uploads/berita/berita_ToyaDevasyaTambahWahanaSelfiedanPipaAirPanasBukaKembali15Juni.jpg",
+        "https://cdn-2.tstatic.net/bali/foto/bank/images/toya-devasya-natural-hot-springs-bangli.jpg"
+      ]
+    },
+    {
+      "name": "Pantai Nyang Nyang",
+      "address": "Br. Karang Boma, desa Pecatu, kecamatan Kuta Selatan, Kabupaten Badung, Bali.",
+      "description": "Pantai terpencil ini memiliki hamparan pasir yang dibatasi oleh perbukitan hijau & pantai berbatu.",
+      "longitude": 115.1095162786048,
+      "latitude": -8.672012481942975, 
+      "images": [
+        "https://a.cdn-hotels.com/gdcs/production142/d1263/8e9c202e-d61f-4c1d-a325-fa0a2b05c25f.jpg",
+        "https://www.tempatwisata.pro/users_media/3150/Lokasi%20Pantai%20Nyang%20Nyang.jpg"
+      ]
+    },
+    {
+      "name": "Pantai Balangan",
+      "address": " Jl. Pantai Balangan, Desa Ungasan, Kelurahan Jimbaran, Kecamatan Kuta Selatan, Bali.",
+      "description": "Pantai berpasir putih sederhana yang populer di kalangan peselancar & penikmat matahari terbenam, dengan beberapa tempat makan di dekatnya.",
+      "longitude": 115.1095162786048,
+      "latitude": -8.672012481942975, 
+      "images": [
+        "https://www.pesisir.net/wp-content/uploads/2021/06/Pantai-Balangan-Bali.jpg",
+        "https://www.google.com/url?sa=i&url=https%3A%2F%2Ftravelspromo.com%2Fhtm-wisata%2Fpantai-balangan-badung%2F&psig=AOvVaw3GchQv68dTkYmmbWnss-lw&ust=1654316086157000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCPi7pem1kPgCFQAAAAAdAAAAABAT"
+      ]
+    },
+    {
+      "name": "Garuda Wisnu Kencana Cultural Park",
+      "address": "Jl Uluwatu, Ungasan, South Kuta, Badung Regency, Bali 80364",
+      "description": "Garuda Wisnu Kencana (GWK) merupakan sebuah patung raksasa karya salah satu pematung kenamaan asal Bali, Nyoman Nuarta.",
+      "longitude": 115.10951605960588,
+      "latitude": -8.679397890085482, 
+      "images": [
+        "https://www.tempatwisata.pro/media/uploads/3136/c1083f1e0b89d87f7ffaef17542bc718.jpg",
+        "https://mybalitrips.com/static/common/blog_mbt/gwk-2.jpg"
+      ]
+    },
+    {
+      "name": "Pura Uluwatu",
+      "address": "Pecatu, South Kuta, Badung Regency, Bali",
+      "description": "Pura Luhur Uluwatu atau Pura Uluwatu merupakan pura yang berada di wilayah Desa Adat Pecatu, Kecamatan Kuta Selatan, Kabupaten Badung.",
+      "longitude": 115.15346157748984,
+      "latitude": -8.562601313021675, 
+      "images": [
+        "https://cdn.nativeindonesia.com/foto/2018/08/pura-uluwatu-bali.jpg",
+        "https://www.kabarwisatabali.com/wp-content/uploads/2021/10/Pura-Uluwatu-Bali.jpg"
+      ]
+    },
+    {
+      "name": "Monumen Bajra Sandhi",
+      "address": "Jl. Raya Puputan No.142, Panjer, Denpasar Selatan, Kota Denpasar, Bali 80234",
+      "description": "Monumen Bajra Sandhi atau disebut juga Monumen Perjuangan Rakyat Bali adalah monumen perjuangan rakyat Bali yang terletak di Renon, Kota Denpasar, Bali.",
+      "longitude": 115.25931374104371,
+      "latitude": -8.414646822506183, 
+      "images": [
+        "http://assets.kompasiana.com/statics/files/14008217911346211869.jpg",
+        "https://www.djkn.kemenkeu.go.id/files/images/2020/04/T-RDSC06432.jpg"
+      ]
+    },
+    {
+      "name": "Pura Tanah Lot",
+      "address": "Beraban, Kediri, Tabanan Regency, Bali 82121",
+      "description": "Pura Tanah Lot adalah salah satu Pura yang sangat disucikan di Bali, Indonesia. Di sini ada dua pura yang terletak di atas batu besar. Satu terletak di atas bongkahan batu dan satunya terletak di atas tebing mirip dengan Pura Uluwatu.",
+      "longitude": 115.15346157748984,
+      "latitude": -8.562601313021675, 
+      "images": [
+        "http://backpackerjakarta.com/wp-content/uploads/2017/03/173-tanah-lot-temple2.jpg",
+        "https://www.rentalmobilbali.net/wp-content/uploads/2019/12/Sunset-Pura-Tanah-Lot-Bali-Twitter.jpg"
+      ]
     }
   ]
 }
