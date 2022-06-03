@@ -28,7 +28,14 @@ class Place {
       ON (places.id = t.place_id);
     `;
     const result = await query(statement, [id]);
-    return result.rows[0];
+    const data = result.rows[0];
+    const { avg, longitude, latitude, place_id, ...rest } = data;
+    return {
+      ...rest,
+      longitude: +longitude,
+      latitude: +latitude,
+      review: { average_rating: +avg }
+    };
   };
 
   static count = async () => {
@@ -51,7 +58,16 @@ class Place {
     `;
 
     const result = await query(statement, [limit, offset]);
-    return result.rows;
+    const data = result.rows;
+    return data.map((p) => {
+      const { avg, longitude, latitude, place_id, ...rest } = p;
+      return {
+        ...rest,
+        longitude: +longitude,
+        latitude: +latitude,
+        review: { average_rating: +avg }
+      };
+    });
   };
 }
 

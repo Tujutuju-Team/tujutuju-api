@@ -22,7 +22,7 @@ class RestaurantReview {
     }
 
     const statement = `
-      SELECT r.id AS review_id, r.rating, r.description, users.id AS user_id, users.name, users.profile_picture FROM restaurant_reviews AS r 
+      SELECT r.id AS review_id, r.rating, r.description, users.id AS user_id, users.name, users.avatar FROM restaurant_reviews AS r 
       JOIN users ON (r.user_id = users.id)
       WHERE r.restaurant_id = $1
       LIMIT $2 
@@ -30,7 +30,19 @@ class RestaurantReview {
     `;
 
     const result = await query(statement, [this.restaurantId, limit, offset]);
-    return result.rows;
+    const data = result.rows;
+    return data.map((item) => {
+      return {
+        id: item.review_id,
+        rating: item.rating,
+        description: item.description,
+        author: {
+          id: item.user_id,
+          name: item.name,
+          avatar: item.avatar
+        }
+      };
+    });
   };
 
   create = async () => {
