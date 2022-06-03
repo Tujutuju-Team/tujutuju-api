@@ -19,6 +19,8 @@ process.env.NODE_ENV === "development" &&
 
 Router.get("/me", auth.isAuth, controllers.users.me);
 
+Router.get("/search", controllers.search.search);
+
 Router.put(
   "/me/password",
   auth.isAuth,
