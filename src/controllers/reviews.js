@@ -12,7 +12,8 @@ async function place(req, res) {
   const id = +req.params.id;
   const limit = +req.query.limit || 10;
   const page = +req.query.page || 1;
-  const url = process.env.DOMAIN + req.path;
+  const { PROTOCOL, DOMAIN } = process.env;
+  const url = PROTOCOL + DOMAIN + req.path;
 
   const pr = new PlaceReview({ placeId: id });
   const result = await pagination.getData(url, limit, page, pr);
@@ -36,7 +37,8 @@ async function restaurant(req, res) {
   const id = +req.params.id;
   const limit = +req.query.limit || 10;
   const page = +req.query.page || 1;
-  const url = process.env.DOMAIN + req.path;
+  const { PROTOCOL, DOMAIN } = process.env;
+  const url = PROTOCOL + DOMAIN + req.path;
 
   const rr = new RestaurantReview({ restaurantId: id });
   const result = await pagination.getData(url, limit, page, rr);

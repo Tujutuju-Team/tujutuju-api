@@ -3,9 +3,10 @@ const { asyncWrapper, pagination } = require("../utils");
 const { Restaurant } = require("../repository");
 
 async function index(req, res) {
+  const { PROTOCOL, DOMAIN } = process.env;
+  const url = PROTOCOL + DOMAIN + req.path;
   const limit = +req.query.limit || 10;
   const page = +req.query.page || 1;
-  const url = process.env.DOMAIN + req.path;
 
   const result = await pagination.getData(url, limit, page, Restaurant);
 
