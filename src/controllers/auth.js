@@ -62,13 +62,16 @@ async function login(req, res) {
     jti: await nanoid()
   });
 
+  const { password: pw, ...userProfileData } = user;
+
   res.json({
     meta: {
       code: status.HTTP_STATUS_OK,
       message: "Login success"
     },
     data: {
-      token: token
+      token: token,
+      user: userProfileData
     }
   });
 }
