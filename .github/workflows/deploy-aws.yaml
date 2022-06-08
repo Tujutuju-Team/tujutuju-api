@@ -19,13 +19,14 @@ jobs:
         uses: appleboy/ssh-action@master
         env:
           AWS_ENV_FILE: ${{ secrets.AWS_ENV_FILE }}
+          GCP_CLOUD_STORAGE_SA: ${{ secrets.GCP_CLOUD_STORAGE_SA }}
         with:
           host: ${{ secrets.AWS_EC2_SSH_HOST }}
           port: 22
           username: ${{ secrets.AWS_EC2_USER }}
           key: ${{ secrets.AWS_EC2_SSH_KEY }}
           timeout: "5m"
-          envs: AWS_ENV_FILE
+          envs: AWS_ENV_FILE,GCP_CLOUD_STORAGE_SA
           script: |
             cd ~/tujutuju-api
             docker-compose down
@@ -33,6 +34,7 @@ jobs:
 
             git pull origin main
             echo $AWS_ENV_FILE | base64 --decode > .env
+            echo $GCP_CLOUD_STORAGE_SA > gcp-bucket-sa.json
             docker volume create tujutuju-nodemodules && docker-compose -f docker-compose.builder.yaml run --rm install && docker-compose up -d
 
   migrate-db:

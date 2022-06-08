@@ -200,3 +200,4 @@ $RECYCLE.BIN/
 
 volumes/
 config/database.json
+gcp-bucket-sa.json

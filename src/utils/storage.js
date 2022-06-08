@@ -19,7 +19,7 @@ function getStorage() {
     switch (NODE_ENV) {
       case "production":
         storage = new GoogleCloudStorage(
-          CLOUD_STORAGE_KEYFILE,
+          path.join(pathUtils.APP_DIR, "..", CLOUD_STORAGE_KEYFILE),
           CLOUD_STORAGE_BUCKET
         );
         break;
@@ -51,8 +51,8 @@ class LocalStorage {
 
     await io.copy(readable, fs.createWriteStream(dest));
 
-    const { DOMAIN } = process.env;
-    return `http://${DOMAIN}/static/${fileName}`;
+    const { PROTOCOL, DOMAIN } = process.env;
+    return `${PROTOCOL}${DOMAIN}/static/${fileName}`;
   }
 
   async remove(fileName) {
@@ -78,7 +78,9 @@ class GoogleCloudStorage {
 
     // const [metadata] = blob.getMetadata();
     // return metadata.mediaLink;
-    const publicUrl = `${bucket.name}/${blob.name}`;
+    const publicUrl = `https://storage.googleapis.com/${this.#bucket.name}/${
+      blob.name
+    }`;
     return publicUrl;
   }
 
