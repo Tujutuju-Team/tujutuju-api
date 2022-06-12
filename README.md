@@ -20,3 +20,8 @@
 ### To clear all resources:
 
 1. Run: `npm run docker:clear`
+
+
+
+### Entitiy Relationship Diagram
+<img width="506" alt="Screenshot 2022-06-12 154604" src="https://user-images.githubusercontent.com/89337866/173225092-a0abfd64-3ecd-468d-ac2e-bf85100537df.png">
