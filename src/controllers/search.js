@@ -46,9 +46,13 @@ async function search(req, res, next) {
 	})
 
 	const obj = {
-		place: Place,
 		food: Food,
-		restaurant: Restaurant
+		restaurant: Restaurant,
+		place: Place,
+		beach: Place,
+		temple: Place,
+		museum: Place,
+		hotel: Place
 	}
 
 	const retriever = obj[data.result]
@@ -58,20 +62,21 @@ async function search(req, res, next) {
 			.json({ error: { message: 'Result not found', category } })
 	}
 
-	const result = await pagination.getData(url, limit, page, retriever)
+	const result = await retriever.find({ offset: 0, limit: 10 })
+	const p = retriever === Place ? result : []
+	const r = retriever === Restaurant ? result : []
+	const f = retriever === Food ? result : []
 
 	res.json({
 		meta: {
-			code: status.OK,
+			code: status.HTTP_STATUS_OK,
 			message: 'Success retrieveing data'
 		},
-		pagination: {
-			total_data: result.totalData,
-			total_page: result.totalPage,
-			next_url: result.nextUrl,
-			prev_url: result.prevUrl
-		},
-		data: result.data
+		data: {
+			places: [...places, ...p],
+			restaurants: [...restaurants, ...r],
+			foods: [...foods, ...f]
+		}
 	})
 }
 
