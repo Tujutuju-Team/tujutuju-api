@@ -1,6 +1,6 @@
 # API for tujutuju application
 
-### How initialize & start project for the first time:
+**How initialize & start project for the first time:**
 
 1. Run: `npm run docker:up` (this will install dependencies and start the application)
 2. Open new terminal tab
@@ -9,19 +9,19 @@
 
 **👌 Done!**
 
-### Next time, to start project :
+**Next time, to start project :**
 
 1. Run: `npm run docker:up`
 
-### To stop the project:
+**To stop the project:**
 
 1. Run: `npm run docker:down`
 
-### To clear all resources:
+**To clear all resources:**
 
 1. Run: `npm run docker:clear`
 
 
 
-### Entitiy Relationship Diagram
+## Entitiy Relationship Diagram
 <img width="506" alt="Screenshot 2022-06-12 154604" src="https://user-images.githubusercontent.com/89337866/173225092-a0abfd64-3ecd-468d-ac2e-bf85100537df.png">
