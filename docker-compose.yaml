@@ -1,29 +1,37 @@
-version: "3.8"
+version: '3.8'
 services:
   api:
-    container_name: "api"
-    env_file: ".env"
-    image: "node:16"
-    command: "npm start"
-    working_dir: "/app"
+    container_name: 'api'
+    env_file: '.env'
+    image: 'node:16'
+    command: 'npm start'
+    working_dir: '/app'
     volumes:
-      - "tujutuju-nodemodules:/app/node_modules"
-      - ".:/app"
+      - 'tujutuju-nodemodules:/app/node_modules'
+      - '.:/app'
     ports:
-      - "${PORT}:${PORT}"
+      - '${PORT}:${PORT}'
     depends_on:
       - db
     deploy:
       restart_policy:
         condition: on-failure
 
+  ml:
+    image: ml
+    ports:
+      - '5000:5000'
+    deploy:
+      restart_policy:
+        condition: on-failure
+
   db:
-    container_name: "db"
-    env_file: ".env"
-    image: "postgres:latest"
+    container_name: 'db'
+    env_file: '.env'
+    image: 'postgres:latest'
     volumes:
-      - "./volumes/db:/var/lib/postgresql/data"
-      - "./scripts/docker/db:/docker-entrypoint-initdb.d"
+      - './volumes/db:/var/lib/postgresql/data'
+      - './scripts/docker/db:/docker-entrypoint-initdb.d'
     deploy:
       restart_policy:
         condition: on-failure

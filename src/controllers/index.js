@@ -5,5 +5,6 @@ module.exports = {
   places: require("./places"),
   errors: require("./errors"),
   restaurants: require("./restaurants"),
-  reviews: require("./reviews")
+  reviews: require("./reviews"),
+  search: require("./search")
 };
