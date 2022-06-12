@@ -1,7 +1,6 @@
 version: '3.8'
 services:
   api:
-    container_name: 'api'
     env_file: '.env'
     image: 'node:16'
     command: 'npm start'
@@ -26,7 +25,6 @@ services:
         condition: on-failure
 
   db:
-    container_name: 'db'
     env_file: '.env'
     image: 'postgres:latest'
     volumes:
